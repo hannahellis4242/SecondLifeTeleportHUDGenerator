@@ -86,6 +86,19 @@ const writeScript = (menu: Menu): string => {
         () => "return x<min && x>max;",
         "integer"
       ),
+      new ScriptFunc(
+        "inside",
+        [
+          new ScriptVar("integer", "x"),
+          new ScriptVar("integer", "y"),
+          new ScriptVar("integer", "left"),
+          new ScriptVar("integer", "bottom"),
+          new ScriptVar("integer", "right"),
+          new ScriptVar("integer", "top"),
+        ],
+        () => "return between(x,left,right) && between(y,bottom,top);",
+        "integer"
+      ),
     ]) +
     writeDefaultState(stateEntry, touch)
   );
