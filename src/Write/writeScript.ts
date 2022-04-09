@@ -16,23 +16,26 @@ class ScriptFunc {
 }
 
 const writeVar = (v: ScriptVar): string => {
-  return v.type + " " + v.name + ";";
+  return v.type + " " + v.name;
 };
 
 const writeFunc = (f: ScriptFunc): string => {
-  return f.returnType
-    ? f.returnType + " "
-    : "" +
-        f.name +
-        "(" +
-        f.args.map(writeVar).join(", ") +
-        "){" +
-        f.body() +
-        "}";
+  return (
+    (f.returnType ? f.returnType + " " : "") +
+    f.name +
+    "(" +
+    f.args.map(writeVar).join(", ") +
+    "){" +
+    f.body() +
+    "}"
+  );
 };
 
 const writeGlobalVars = (vars: ScriptVar[]): string => {
-  return vars.map(writeVar).join("\n");
+  return vars
+    .map(writeVar)
+    .map((x) => x + ";")
+    .join("\n");
 };
 
 const writeGlobalFuncs = (funcs: ScriptFunc[]): string => {
@@ -72,7 +75,18 @@ const writeScript = (menu: Menu): string => {
       new ScriptVar("integer", "channel"),
       new ScriptVar("integer", "menuID"),
     ]) +
-    writeGlobalFuncs([]) +
+    writeGlobalFuncs([
+      new ScriptFunc(
+        "between",
+        [
+          new ScriptVar("integer", "x"),
+          new ScriptVar("integer", "min"),
+          new ScriptVar("integer", "max"),
+        ],
+        () => "return x<min && x>max;",
+        "integer"
+      ),
+    ]) +
     writeDefaultState(stateEntry, touch)
   );
 };
