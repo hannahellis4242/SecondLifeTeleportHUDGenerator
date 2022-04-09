@@ -4,7 +4,10 @@
   "description": "A command line tool to generate a script file for second life",
   "main": "dist/main.js",
   "scripts": {
-    "test": "jest"
+    "start": "node dist/main.js",
+    "test": "jest",
+    "build": "tsc",
+    "dev-build": "tsc -w"
   },
   "repository": {
     "type": "git",
