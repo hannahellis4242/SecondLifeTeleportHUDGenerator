@@ -1,0 +1,8 @@
+{
+  "options": [
+    {
+      "rect": { "left": 0, "bottom": 0, "right": 1, "top": 1 },
+      "action": { "type": "teleport", "label": "Home" }
+    }
+  ]
+}
