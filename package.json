@@ -1,0 +1,27 @@
+{
+  "name": "secondlifeteleporthudgenerator",
+  "version": "1.0.0",
+  "description": "A command line tool to generate a script file for second life",
+  "main": "dist/main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hannahellis4242/SecondLifeTeleportHUDGenerator.git"
+  },
+  "keywords": [
+    "second",
+    "life",
+    "code",
+    "generator",
+    "HUD",
+    "teleport"
+  ],
+  "author": "Hannah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hannahellis4242/SecondLifeTeleportHUDGenerator/issues"
+  },
+  "homepage": "https://github.com/hannahellis4242/SecondLifeTeleportHUDGenerator#readme"
+}
