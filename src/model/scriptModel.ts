@@ -7,25 +7,16 @@ export class Rect {
   ) {}
 }
 
-export class TeleportAction {
-  constructor(public label: string) {}
+export interface Action {
+  label?: string;
+  menu?: Menu;
 }
 
-export class MenuAction {
-  constructor(public menu: Menu) {}
+export interface Option {
+  rect?: Rect;
+  label?: string;
+  action: Action;
 }
-
-type Action = TeleportAction | MenuAction;
-
-export class HUDOption {
-  constructor(public rect: Rect, public action: Action) {}
-}
-
-export class MenuOption {
-  constructor(public label: string, public action: Action) {}
-}
-
-type Option = HUDOption | MenuOption;
 
 export default class Menu {
   constructor(public options: Option[], public message?: string) {}
