@@ -15,9 +15,8 @@ const flattenMenu = (menu: Menu): Menu[] => {
 };
 
 const makeDoMenuFunc = (menu: Menu) => {
-  const [_, ...flattened] = flattenMenu(menu);
-  //console.log("flattened : ", JSON.stringify(flattened, undefined, 4));
-  const body = flattened
+  const [_, ...decendants] = flattenMenu(menu);
+  const body = decendants
     .map((menu) => {
       return `if(menuID=="${menu.id}"){
           llDialog(user,${
