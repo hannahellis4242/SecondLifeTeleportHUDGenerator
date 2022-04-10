@@ -1,12 +1,21 @@
 {
   "options": [
     {
-      "rect": { "left": 0, "bottom": 0.5, "right": 1, "top": 1 },
-      "action": { "label": "Home" }
+      "rect": { "left": 0, "bottom": 0.5, "right": 0.5, "top": 1 },
+      "action": { "label": "Central Park" }
+    },
+    {
+      "rect": { "left": 0.5, "bottom": 0.5, "right": 1, "top": 1 },
+      "action": { "label": "Moon_Sha" }
     },
     {
       "rect": { "left": 0, "bottom": 0, "right": 1, "top": 0.5 },
-      "action": { "menu": { "options": [] } }
+      "action": {
+        "menu": {
+          "message": "this is a menu",
+          "options": [{ "label": "test", "action": { "label": "test" } }]
+        }
+      }
     }
   ]
 }

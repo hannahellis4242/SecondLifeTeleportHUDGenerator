@@ -1,5 +1,6 @@
 import Menu, { Rect } from "../model/scriptModel";
 import makeBetweenFunc from "./makeBetweenFunc";
+import makeDoMenuFunc from "./makeDoMenuFunc";
 import makeDoTeleportFunc from "./makeDoTeleportFunc";
 import makeInsideFunc from "./makeInsideFunc";
 import makeTouchHandler from "./makeTouchHandler";
@@ -43,12 +44,13 @@ const writeScript = (menu: Menu): string => {
       makeVar("string", "location"),
       makeVar("integer", "listener"),
       makeVar("integer", "channel"),
-      makeVar("integer", "menuID"),
+      makeVar("string", "menuID"),
     ]) +
     writeGlobalFuncs([
       makeBetweenFunc(),
       makeInsideFunc(),
       makeDoTeleportFunc(),
+      makeDoMenuFunc(menu),
       makeTouchHandler(menu, true),
     ]) +
     writeDefaultState(stateEntry, touch, runtimePermissions)

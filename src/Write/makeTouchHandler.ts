@@ -19,8 +19,8 @@ const makeTouchHandler = (menu: Menu, debug: boolean): ScriptFunc => {
               return `if( inside(x,y,${rectToParams(rect)}))
             { ${debug ? `llOwnerSay("${action.label}");` : ""}
               doTeleport("${action.label}");}`;
-            } else {
-              return `/*menu action TODO*/`;
+            } else if (action.menu) {
+              return `menuID="${action.menu.id}";doMenu();`;
             }
           } else {
             return "";

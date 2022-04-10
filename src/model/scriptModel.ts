@@ -1,3 +1,5 @@
+import { v4 } from "uuid";
+
 export class Rect {
   constructor(
     public left: number,
@@ -19,5 +21,8 @@ export interface Option {
 }
 
 export default class Menu {
-  constructor(public options: Option[], public message?: string) {}
+  public id: string;
+  constructor(public options: Option[], public message?: string) {
+    this.id = v4().toString();
+  }
 }
