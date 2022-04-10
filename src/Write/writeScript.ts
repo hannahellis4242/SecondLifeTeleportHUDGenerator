@@ -3,6 +3,7 @@ import makeBetweenFunc from "./makeBetweenFunc";
 import makeDoMenuFunc from "./makeDoMenuFunc";
 import makeDoTeleportFunc from "./makeDoTeleportFunc";
 import makeInsideFunc from "./makeInsideFunc";
+import makeMenuHandlerFunc from "./makeMenuHandlerFunc";
 import makeTouchHandler from "./makeTouchHandler";
 import { makeVar } from "./ScriptVar";
 import writeDefaultState from "./writeDefaultState";
@@ -43,6 +44,11 @@ const timer = () => `timer()
     llSetTimerEvent(0);
 }`;
 
+const listen = () => `listen(integer chan,string name,key id,string msg)
+{
+    menuHandler(msg);
+}`;
+
 const writeScript = (menu: Menu): string => {
   return (
     writeGlobalVars([
@@ -57,9 +63,10 @@ const writeScript = (menu: Menu): string => {
       makeInsideFunc(),
       makeDoTeleportFunc(),
       makeDoMenuFunc(menu),
-      makeTouchHandler(menu, true),
+      makeTouchHandler(menu, false),
+      makeMenuHandlerFunc(menu),
     ]) +
-    writeDefaultState(stateEntry, touch, runtimePermissions, timer)
+    writeDefaultState(stateEntry, touch, runtimePermissions, timer, listen)
   );
 };
 
