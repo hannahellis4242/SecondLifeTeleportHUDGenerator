@@ -20,7 +20,7 @@ const makeTouchHandler = (menu: Menu, debug: boolean): ScriptFunc => {
             { ${debug ? `llOwnerSay("${action.label}");` : ""}
               doTeleport("${action.label}");}`;
             } else {
-              return "/*menu action*/";
+              return `/*menu action TODO*/`;
             }
           } else {
             return "";
