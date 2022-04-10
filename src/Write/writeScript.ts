@@ -1,5 +1,8 @@
 import Menu, { Rect } from "../model/scriptModel";
-import ScriptFunc from "./ScriptFunc";
+import makeBetweenFunc from "./makeBetweenFunc";
+import makeDoTeleportFunc from "./makeDoTeleportFunc";
+import makeInsideFunc from "./makeInsideFunc";
+import makeTouchHandler from "./makeTouchHandler";
 import { makeVar } from "./ScriptVar";
 import writeDefaultState from "./writeDefaultState";
 import writeGlobalFuncs from "./writeGlobalFuncs";
@@ -33,36 +36,6 @@ const runtimePermissions = () => {
   }`;
 };
 
-const rectToParams = ({ left, bottom, right, top }: Rect): string => {
-  return `${left},${bottom},${right},${top}`;
-};
-
-const createTouchHandler = (menu: Menu, debug: boolean): ScriptFunc => {
-  const ret = new ScriptFunc(
-    "touchHandler",
-    [makeVar("float", "x"), makeVar("float", "y")],
-    () => {
-      return menu.options
-        .map((option) => {
-          if (option.rect) {
-            const { rect, action } = option;
-            if (action.label) {
-              return `if( inside(x,y,${rectToParams(rect)}))
-          { ${debug ? `llOwnerSay(${action.label});` : ""}
-            doTeleport("${action.label}");}`;
-            } else {
-              return "/*menu action*/";
-            }
-          } else {
-            return "";
-          }
-        })
-        .join("\n");
-    }
-  );
-  return ret;
-};
-
 const writeScript = (menu: Menu): string => {
   return (
     writeGlobalVars([
@@ -73,35 +46,10 @@ const writeScript = (menu: Menu): string => {
       makeVar("integer", "menuID"),
     ]) +
     writeGlobalFuncs([
-      new ScriptFunc(
-        "between",
-        [
-          makeVar("float", "x"),
-          makeVar("float", "min"),
-          makeVar("float", "max"),
-        ],
-        () => "return x<min && x>max;",
-        "integer"
-      ),
-      new ScriptFunc(
-        "inside",
-        [
-          makeVar("float", "x"),
-          makeVar("float", "y"),
-          makeVar("float", "left"),
-          makeVar("float", "bottom"),
-          makeVar("float", "right"),
-          makeVar("float", "top"),
-        ],
-        () => "return between(x,left,right) && between(y,bottom,top);",
-        "integer"
-      ),
-      new ScriptFunc(
-        "doTeleport",
-        [makeVar("string", "loc")],
-        () => "location=loc; llRequestPermissions(user, PERMISSION_TELEPORT);"
-      ),
-      createTouchHandler(menu, true),
+      makeBetweenFunc(),
+      makeInsideFunc(),
+      makeDoTeleportFunc(),
+      makeTouchHandler(menu, true),
     ]) +
     writeDefaultState(stateEntry, touch, runtimePermissions)
   );
