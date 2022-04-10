@@ -11,7 +11,7 @@ const makeTouchHandler = (menu: Menu, debug: boolean): ScriptFunc => {
     "touchHandler",
     [makeVar("float", "x"), makeVar("float", "y")],
     () => {
-      return menu.options
+      return `${menu.options
         .map((option) => {
           if (option.rect) {
             const { rect, action } = option;
@@ -26,7 +26,9 @@ const makeTouchHandler = (menu: Menu, debug: boolean): ScriptFunc => {
             return "";
           }
         })
-        .join("\n");
+        .join("\n")}
+        llSetTimerEvent(60);
+        `;
     }
   );
   return ret;

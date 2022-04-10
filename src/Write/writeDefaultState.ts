@@ -1,12 +1,14 @@
 const writeDefaultState = (
   writeStateEntry: () => string,
   writeTouch: () => string,
-  writeRunTimePermissions: () => string
+  writeRunTimePermissions: () => string,
+  writeTimer: () => string
 ): string => {
   return `default{
       ${writeStateEntry()}
       ${writeTouch()}
       ${writeRunTimePermissions()}
+      ${writeTimer()}
     }`;
 };
 

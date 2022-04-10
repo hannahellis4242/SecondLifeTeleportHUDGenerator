@@ -19,11 +19,11 @@ const makeDoMenuFunc = (menu: Menu) => {
   const body = decendants
     .map((menu) => {
       return `if(menuID=="${menu.id}"){
-          llDialog(user,${
+          llDialog(user,"${
             menu.message ? menu.message : "no message"
-          },[${menu.options
+          }",[${menu.options
         .map((option) => {
-          return option.label ? option.label : "no label";
+          return `"${option.label ? option.label : "no label"}"`;
         })
         .join(",")}],channel);
       }`;

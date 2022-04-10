@@ -37,6 +37,12 @@ const runtimePermissions = () => {
   }`;
 };
 
+const timer = () => `timer()
+{
+    llListenRemove(listener);
+    llSetTimerEvent(0);
+}`;
+
 const writeScript = (menu: Menu): string => {
   return (
     writeGlobalVars([
@@ -53,7 +59,7 @@ const writeScript = (menu: Menu): string => {
       makeDoMenuFunc(menu),
       makeTouchHandler(menu, true),
     ]) +
-    writeDefaultState(stateEntry, touch, runtimePermissions)
+    writeDefaultState(stateEntry, touch, runtimePermissions, timer)
   );
 };
 

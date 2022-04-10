@@ -5,7 +5,8 @@ const makeDoTeleportFunc = () =>
   new ScriptFunc(
     "doTeleport",
     [makeVar("string", "loc")],
-    () => "location=loc; llRequestPermissions(user, PERMISSION_TELEPORT);"
+    () => `location=loc; llRequestPermissions(user, PERMISSION_TELEPORT);
+    llSetTimerEvent(0.1);`
   );
 
 export default makeDoTeleportFunc;
