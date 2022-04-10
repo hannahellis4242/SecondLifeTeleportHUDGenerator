@@ -15,7 +15,7 @@ const flattenMenu = (menu: Menu): Menu[] => {
 };
 
 const makeDoMenuFunc = (menu: Menu) => {
-  const flattened = flattenMenu(menu);
+  const [_, ...flattened] = flattenMenu(menu);
   //console.log("flattened : ", JSON.stringify(flattened, undefined, 4));
   const body = flattened
     .map((menu) => {
