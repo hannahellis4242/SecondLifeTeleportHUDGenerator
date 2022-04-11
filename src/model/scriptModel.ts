@@ -10,7 +10,7 @@ export class Rect {
 }
 
 export interface Action {
-  label?: string;
+  destination?: string;
   menu?: Menu;
 }
 

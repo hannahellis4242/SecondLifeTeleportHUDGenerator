@@ -2,7 +2,7 @@
   "options": [
     {
       "rect": { "left": 0, "bottom": 0.5, "right": 1, "top": 1 },
-      "action": { "label": "Central Park" }
+      "action": { "destination": "Central Park" }
     },
     {
       "rect": { "left": 0, "bottom": 0, "right": 1, "top": 0.5 },
@@ -18,13 +18,13 @@
                   "options": [
                     {
                       "label": "Moonlight Shadow",
-                      "action": { "label": "Moon_Sha" }
+                      "action": { "destination": "Moon_Sha" }
                     }
                   ]
                 }
               }
             },
-            { "label": "Random", "action": { "label": "random" } }
+            { "label": "Random", "action": { "destination": "random" } }
           ]
         }
       }

@@ -3,9 +3,9 @@ import ScriptFunc from "./ScriptFunc";
 import { makeVar } from "./ScriptVar";
 import flattenMenu from "./utils/flattenMenu";
 
-const makeActionBody = ({ label, menu }: Action) => {
-  if (label) {
-    return `doTeleport("${label}");`;
+const makeActionBody = ({ destination, menu }: Action) => {
+  if (destination) {
+    return `doTeleport("${destination}");`;
   }
 
   if (menu) {

@@ -46,7 +46,7 @@ const timer = () => `timer()
 
 const listen = () => `listen(integer chan,string name,key id,string msg)
 {
-    menuHandler(msg);
+    handleMenu(msg);
 }`;
 
 const writeScript = (menu: Menu): string => {
@@ -63,7 +63,7 @@ const writeScript = (menu: Menu): string => {
       makeInsideFunc(),
       makeDoTeleportFunc(),
       makeDoMenuFunc(menu),
-      makeTouchHandler(menu, false),
+      makeTouchHandler(menu),
       makeMenuHandlerFunc(menu),
     ]) +
     writeDefaultState(stateEntry, touch, runtimePermissions, timer, listen)
