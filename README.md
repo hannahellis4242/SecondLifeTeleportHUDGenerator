@@ -9,8 +9,8 @@ You will need node.js installed on your system
 Open a command propmt and navigate to where you pulled down this repo (or simply open the command prompt from the file explorer)
 Then type the following into the prompt (waiting for each line to finish before entering the next of course)
 
-1. npm i
-2. npm run build`
+1. `npm i`
+2. `npm run build`
 
 ## How to use
 
