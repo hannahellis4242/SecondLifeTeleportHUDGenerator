@@ -1,30 +1,171 @@
 {
   "options": [
     {
-      "rect": { "left": 0, "bottom": 0.5, "right": 1, "top": 1 },
+      "rect": { "left": 0, "bottom": 0.75, "right": 1, "top": 1 },
       "action": { "destination": "Central Park" }
     },
     {
-      "rect": { "left": 0, "bottom": 0, "right": 1, "top": 0.5 },
+      "rect": { "left": 0, "bottom": 0.5, "right": 1, "top": 0.75 },
       "action": {
         "menu": {
-          "message": "Pick a catagory",
+          "message": "Body & Head",
           "options": [
             {
-              "label": "Shops",
+              "label": "Kalhene",
+              "action": { "destination": "-Kalhene- ERIKA Main Store & Mall" }
+            },
+            {
+              "label": "Belleza",
+              "action": { "destination": "Belleza Body" }
+            },
+            {
+              "label": "Catwa",
+              "action": { "destination": "CATWA Store" }
+            },
+            {
+              "label": "Genus",
+              "action": { "destination": "GENUS Project - MAINSTORE" }
+            },
+            {
+              "label": "Legacy",
+              "action": { "destination": "Legacy Body" }
+            },
+            {
+              "label": "Lelutka",
+              "action": { "destination": "Lelutka Mainstore" }
+            },
+            {
+              "label": "Lucy",
+              "action": { "destination": "LUCY BODY" }
+            },
+            {
+              "label": "Maitreya",
+              "action": {
+                "destination": "Maitreya , Maitreya Isle (127, 125, 23)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "rect": { "left": 0, "bottom": 0.25, "right": 1, "top": 0.5 },
+      "action": {
+        "menu": {
+          "message": "Clothing and Hair",
+          "options": [
+            {
+              "label": "Bonbon",
+              "action": { "destination": "Bonbon - Mainstore Hair" }
+            },
+            {
+              "label": "L'Etre",
+              "action": { "destination": "L'Etre and DOUX. Hair" }
+            },
+            {
+              "label": "Magika",
+              "action": { "destination": "MAGIKA Hair" }
+            },
+            {
+              "label": "no.match",
+              "action": { "destination": "no.match HAIR STORE" }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "rect": { "left": 0, "bottom": 0.0, "right": 1, "top": 0.25 },
+      "action": {
+        "menu": {
+          "message": "Places of interest",
+          "options": [
+            {
+              "label": "Landscapes",
               "action": {
                 "menu": {
-                  "message": "Choose A destination",
+                  "message": "Pick a destination to visit",
                   "options": [
                     {
-                      "label": "Moonlight Shadow",
-                      "action": { "destination": "Moon_Sha" }
+                      "label": "Bella's",
+                      "destination": "Bella's Lullaby"
+                    },
+                    {
+                      "label": "Elepthant",
+                      "destination": "Elephant Island"
+                    },
+                    {
+                      "label": "La Vallee",
+                      "destination": "La Vallee"
+                    },
+                    {
+                      "label": "Luane's",
+                      "destination": "Luane's Magical World NEW!"
+                    },
+                    {
+                      "label": "The Mesa",
+                      "destination": "The Mesa"
+                    },
+                    {
+                      "label": "Timeless",
+                      "destination": "Timeless Memories"
                     }
                   ]
                 }
               }
             },
-            { "label": "Random", "action": { "destination": "random" } }
+            {
+              "label": "Education",
+              "action": {
+                "menu": {
+                  "message": "Pick a destination to visit",
+                  "options": [
+                    {
+                      "label": "Builder's Brewery",
+                      "action": { "destination": "Builders Brewery" }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "label": "Hangouts",
+              "action": {
+                "menu": {
+                  "message": "Pick a destination to visit",
+                  "options": [
+                    {
+                      "label": "Muddy's Music",
+                      "action": { "destination": "Muddy's Music Cafe" }
+                    },
+                    {
+                      "label": "Sanctuary of Rock",
+                      "action": { "destination": "Sanctuary of Rock" }
+                    },
+                    {
+                      "label": "VooDoo",
+                      "action": { "destination": "VooDoo" }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "label": "LGBT+",
+              "action": {
+                "menu": {
+                  "message": "Pick a destination to visit",
+                  "options": [
+                    {
+                      "label": "Metro City",
+                      "destination": "Metro City"
+                    },
+                    { "label": "TRC", "destination": "TRC" },
+                    { "label": "TDOR Memorial", "destination": "THCSM" }
+                  ]
+                }
+              }
+            }
           ]
         }
       }
