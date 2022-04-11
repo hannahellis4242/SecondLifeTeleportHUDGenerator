@@ -1,3 +1,5 @@
+import { writeFile } from "fs";
+import { promisify } from "util";
 import Menu, { Rect } from "../model/scriptModel";
 import makeBetweenFunc from "./makeBetweenFunc";
 import makeDoMenuFunc from "./makeDoMenuFunc";
@@ -49,7 +51,7 @@ const listen = () => `listen(integer chan,string name,key id,string msg)
     handleMenu(msg);
 }`;
 
-const writeScript = (menu: Menu): string => {
+const writeScriptStr = (menu: Menu): string => {
   return (
     writeGlobalVars([
       makeVar("key", "user"),
@@ -68,6 +70,10 @@ const writeScript = (menu: Menu): string => {
     ]) +
     writeDefaultState(stateEntry, touch, runtimePermissions, timer, listen)
   );
+};
+
+const writeScript = async (menu: Menu) => {
+  return promisify(writeFile)("script.lsl", writeScriptStr(menu));
 };
 
 export default writeScript;
