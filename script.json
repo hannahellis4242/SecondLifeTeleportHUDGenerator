@@ -12,7 +12,7 @@
           "options": [
             {
               "label": "Kalhene",
-              "action": { "destination": "-Kalhene- ERIKA Main Store & Mall" }
+              "action": { "destination": "Kalhene" }
             },
             {
               "label": "Belleza",
@@ -88,27 +88,27 @@
                   "options": [
                     {
                       "label": "Bella's",
-                      "destination": "Bella's Lullaby"
+                      "action": { "destination": "Bella's Lullaby" }
                     },
                     {
                       "label": "Elepthant",
-                      "destination": "Elephant Island"
+                      "action": { "destination": "Elephant Island" }
                     },
                     {
                       "label": "La Vallee",
-                      "destination": "La Vallee"
+                      "action": { "destination": "La Vallee" }
                     },
                     {
                       "label": "Luane's",
-                      "destination": "Luane's Magical World NEW!"
+                      "action": { "destination": "Luane's Magical World NEW!" }
                     },
                     {
                       "label": "The Mesa",
-                      "destination": "The Mesa"
+                      "action": { "destination": "The Mesa" }
                     },
                     {
                       "label": "Timeless",
-                      "destination": "Timeless Memories"
+                      "action": { "destination": "Timeless Memories" }
                     }
                   ]
                 }
@@ -158,10 +158,13 @@
                   "options": [
                     {
                       "label": "Metro City",
-                      "destination": "Metro City"
+                      "action": { "destination": "Metro City" }
                     },
-                    { "label": "TRC", "destination": "TRC" },
-                    { "label": "TDOR Memorial", "destination": "THCSM" }
+                    { "label": "TRC", "action": { "destination": "TRC" } },
+                    {
+                      "label": "TDOR Memorial",
+                      "action": { "destination": "THCSM" }
+                    }
                   ]
                 }
               }
