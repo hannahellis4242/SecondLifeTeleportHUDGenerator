@@ -1,12 +1,14 @@
-import Menu, { Action, Rect } from "../model/scriptModel";
+import Action from "../model/Action";
+import Menu from "../model/Menu";
+import Rectangle from "../model/Rectangle";
 import ScriptFunc from "./ScriptFunc";
 import { makeVar } from "./ScriptVar";
 
-const rectToParams = ({ left, bottom, right, top }: Rect): string => {
+const rectToParams = ({ left, bottom, right, top }: Rectangle): string => {
   return `${left},${bottom},${right},${top}`;
 };
 
-const createRectCheck = (rect: Rect, body: () => string) => {
+const createRectCheck = (rect: Rectangle, body: () => string) => {
   return `if( inside(x,y,${rectToParams(rect)})){${body()}}`;
 };
 

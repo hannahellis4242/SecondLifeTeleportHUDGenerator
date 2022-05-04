@@ -1,4 +1,6 @@
-import Menu, { Option, Action } from "../model/scriptModel";
+import Action from "../model/Action";
+import Menu from "../model/Menu";
+import Option from "../model/Option";
 import ScriptFunc from "./ScriptFunc";
 import { makeVar } from "./ScriptVar";
 import flattenMenu from "./utils/flattenMenu";

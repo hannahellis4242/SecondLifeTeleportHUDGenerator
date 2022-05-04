@@ -1,4 +1,5 @@
-import Menu, { Option } from "../../model/scriptModel";
+import Menu from "../../model/Menu";
+import Option from "../../model/Option";
 
 const getMenu = ({ action }: Option) => action.menu;
 const isMenu = (item?: Menu): item is Menu => {

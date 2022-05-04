@@ -1,4 +1,4 @@
-import Menu, { Option } from "../model/scriptModel";
+import Menu from "../model/Menu";
 import ScriptFunc from "./ScriptFunc";
 import flattenMenu from "./utils/flattenMenu";
 
