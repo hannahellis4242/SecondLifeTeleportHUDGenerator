@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 import Menu from "../model/Menu";
 import Option from "../model/Option";
 import { v4 } from "uuid";
@@ -17,7 +17,9 @@ export const ModelContext = createContext<IModelContext>({
   removeOption(id: string) {},
 });
 
-const ModelContextProvider: React.FC = (props) => {
+const ModelContextProvider: React.FC<{ children: React.ReactNode }> = (
+  props
+) => {
   const [result, setResult] = useState<Menu>({
     id: v4().toString(),
     options: [],
