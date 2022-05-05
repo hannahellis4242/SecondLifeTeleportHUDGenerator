@@ -7,7 +7,7 @@ export const deepCopyOption = (option: Option, parentID?: string): Option => {
     const newMenu = deepCopyMenu(option.action.menu, parentID);
     const newAction = { menu: newMenu };
     return {
-      id: v4().toString(),
+      id: option.id,
       rect: option.rect,
       label: option.label,
       action: newAction,
@@ -18,9 +18,8 @@ export const deepCopyOption = (option: Option, parentID?: string): Option => {
 };
 
 export const deepCopyMenu = (menu: Menu, parentID?: string): Menu => {
-  const newId = v4().toString();
   const newOptions = menu.options.map((option) =>
-    deepCopyOption(option, newId)
+    deepCopyOption(option, menu.id)
   );
-  return new Menu(newId, newOptions, parentID, menu.message);
+  return new Menu(menu.id, newOptions, parentID, menu.message);
 };
