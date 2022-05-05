@@ -4,7 +4,10 @@ import { ModelContext } from "../store/ModelContext";
 const Raw: React.FC = () => {
   const modelContext = useContext(ModelContext);
   return (
-    <section>{JSON.stringify(modelContext.topMenu, undefined, 4)}</section>
+    <section>
+      <header>Config</header>
+      <p>{JSON.stringify(modelContext.topMenu, undefined, 2)}</p>
+    </section>
   );
 };
 

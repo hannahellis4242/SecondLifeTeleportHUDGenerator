@@ -1,5 +1,6 @@
 import React from "react";
-import AddRectangleTeleportOption from "./AddRectangleTeleportOption";
+import AddMenuMenuOption from "./AddMenuMenuOption";
+import AddRectangleMenuOption from "./AddRectangleMenuOption";
 
 const AddMenuOption: React.FC<{ menuID: string; top: boolean }> = ({
   menuID,
@@ -8,7 +9,11 @@ const AddMenuOption: React.FC<{ menuID: string; top: boolean }> = ({
   return (
     <section>
       <header>Add Menu Option</header>
-      {top ? <div>TODO</div> : <div>TODO</div>}
+      {top ? (
+        <AddRectangleMenuOption menuID={menuID} />
+      ) : (
+        <AddMenuMenuOption menuID={menuID} />
+      )}
     </section>
   );
 };

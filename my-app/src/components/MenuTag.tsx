@@ -10,7 +10,7 @@ const MenuTag: React.FC<{ value: Menu }> = ({ value }) => {
   return (
     <section className={classes.menu}>
       <header className={isTopLevel ? classes.top_level : classes.head}>
-        {isTopLevel ? null : <div>Top</div>}
+        {isTopLevel ? <div>Top</div> : null}
         <div>Menu ID : {value.id}</div>
       </header>
       {value.message ? <p>Message : {value.message} </p> : null}

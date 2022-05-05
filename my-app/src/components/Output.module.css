@@ -1,32 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
 
-.head{
-    background-color: darkblue;
-    padding:20px;
-    border-bottom: 1px solid black;
+.head {
+  color: white;
+  font-size: x-large;
+  text-align: center;
+  background-color: darkblue;
+  padding: 20px;
+  border-bottom: 1px solid black;
 }
 
-.output_text{
-    font-style: italic;
-    font-family: 'Roboto';
-    width: fit-content;
+.output_text {
+  font-style: italic;
+  font-family: "Roboto";
+  width: fit-content;
 }
 
-.output{
-    margin: 5px;
-    border: 1px solid black;
-    border-radius: 5px;
-    width:80%;
+.output {
+  margin: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 80%;
 }
 
-.control{
+.control {
   overflow: auto;
 }
 
 .control button {
   align-items: center;
   appearance: button;
-  background-color: #0276FF;
+  background-color: #0276ff;
   border-radius: 8px;
   border-style: none;
   box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
@@ -36,31 +39,32 @@
   display: flex;
   flex-direction: row;
   flex-shrink: 0;
-  font-family: "RM Neue",sans-serif;
+  font-family: "RM Neue", sans-serif;
   font-size: 100%;
   line-height: 1.15;
   margin: 0;
   padding: 10px 21px;
   text-align: center;
   text-transform: none;
-  transition: color .13s ease-in-out,background .13s ease-in-out,opacity .13s ease-in-out,box-shadow .13s ease-in-out;
+  transition: color 0.13s ease-in-out, background 0.13s ease-in-out,
+    opacity 0.13s ease-in-out, box-shadow 0.13s ease-in-out;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
 }
 
 .control button:active {
-  background-color: #006AE8;
+  background-color: #006ae8;
 }
 
 .control button:hover {
-  background-color: #1C84FF;
+  background-color: #1c84ff;
 }
 
-.left{
-  float:left;
+.left {
+  float: left;
 }
 
-.right{
-  float:right;
+.right {
+  float: right;
 }

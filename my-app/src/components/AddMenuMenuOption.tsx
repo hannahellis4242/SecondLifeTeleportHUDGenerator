@@ -3,31 +3,34 @@ import { v4 } from "uuid";
 import { ModelContext } from "../store/ModelContext";
 import TeleportActionInput from "./TeleportActionInput";
 import Option from "../model/Option";
+import Menu from "../model/Menu";
 
-const AddMenuTeleportOption: React.FC<{ menuID: string }> = ({ menuID }) => {
+const AddMenuMenuOption: React.FC<{ menuID: string }> = ({ menuID }) => {
   const modelContext = useContext(ModelContext);
   const labelRef = useRef<HTMLInputElement>(null);
-  const teleportRef = useRef<TeleportActionInput>(null);
+  const messageRef = useRef<HTMLInputElement>(null);
   const submitRef = useRef<HTMLButtonElement>(null);
 
   const onSubmitHandler = (event: React.FormEvent) => {
     event.preventDefault();
     const lableInput = labelRef.current;
-    const teleportInput = teleportRef.current;
-    if (lableInput && teleportInput) {
+    const messageInput = messageRef.current;
+    if (lableInput && messageInput) {
       const option: Option = {
         id: v4().toString(),
         label: lableInput.value,
-        action: { destination: teleportInput.destination },
+        action: {
+          menu: new Menu(v4().toString(), [], menuID, messageInput.value),
+        },
       };
       modelContext.addOption(menuID, option);
     }
   };
   const canSubmit = (): boolean => {
     const lableInput = labelRef.current;
-    const teleportInput = teleportRef.current;
-    return lableInput && teleportInput
-      ? lableInput.value !== "" && teleportInput.destination !== ""
+    const messageInput = messageRef.current;
+    return lableInput && messageInput
+      ? lableInput.value !== "" && messageInput.value !== ""
       : false;
   };
 
@@ -42,7 +45,8 @@ const AddMenuTeleportOption: React.FC<{ menuID: string }> = ({ menuID }) => {
     <form onSubmit={onSubmitHandler}>
       <label htmlFor="label">Option Label : </label>
       <input ref={labelRef} type="text" id="label" onChange={onChange} />
-      <TeleportActionInput ref={teleportRef} onChange={onChange} />
+      <label htmlFor="message">Menu Message : </label>
+      <input ref={messageRef} type="text" id="message" onChange={onChange} />
       <button type="submit" ref={submitRef} disabled={!canSubmit()}>
         Add
       </button>
@@ -50,4 +54,4 @@ const AddMenuTeleportOption: React.FC<{ menuID: string }> = ({ menuID }) => {
   );
 };
 
-export default AddMenuTeleportOption;
+export default AddMenuMenuOption;

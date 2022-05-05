@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import createScript from "../script/createScript";
 import { ModelContext } from "../store/ModelContext";
 import classes from "./Output.module.css";
@@ -7,12 +7,12 @@ const Output: React.FC = () => {
   const modelContext = useContext(ModelContext);
   const output = useRef<HTMLParagraphElement>(null);
 
-  const generate = () => {
+  useEffect(() => {
     const out = output.current;
     if (out) {
       out.innerText = createScript(modelContext.topMenu);
     }
-  };
+  }, [modelContext]);
 
   const copyText = () => {
     const out = output.current;
@@ -26,10 +26,8 @@ const Output: React.FC = () => {
   return (
     <section className={classes.output}>
       <header className={classes.head}>
+        <div>Script Code</div>
         <div className={classes.control}>
-          <button className={classes.left} onClick={generate}>
-            Generate
-          </button>
           <button className={classes.right} onClick={copyText}>
             copy
           </button>

@@ -1,4 +1,3 @@
-import { v4 } from "uuid";
 import Menu from "../Menu";
 import Option from "../Option";
 
