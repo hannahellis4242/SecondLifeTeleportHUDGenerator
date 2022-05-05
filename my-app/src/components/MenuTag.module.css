@@ -5,6 +5,11 @@
 
 .top_level{
     background-color: darkred;
-    border-bottom: 1px black;
+    border-bottom: 1px solid black;
     padding: 5px;
+}
+
+.controls{
+    background-color: grey;
+    border-top: 1px soild black;
 }

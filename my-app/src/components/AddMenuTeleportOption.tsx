@@ -1,28 +1,38 @@
 import React, { useContext, useRef } from "react";
-import Rectangle from "../model/Rectangle";
 import { ModelContext } from "../store/ModelContext";
+import TeleportActionInput from "./TeleportActionInput";
 import RectangleInput from "./RectangleInput";
 
-const AddRectangleOption: React.FC<{ menuID: string }> = ({ menuID }) => {
+const AddRectangleTeleportOption: React.FC<{ menuID: string }> = ({
+  menuID,
+}) => {
   const modelContext = useContext(ModelContext);
   const rectangleRef = useRef<RectangleInput>(null);
+  const teleportRef = useRef<TeleportActionInput>(null);
   const submitRef = useRef<HTMLButtonElement>(null);
-
-  const onChange = () => {
-    console.log("changed");
-  };
 
   const onSubmitHandler = (event: React.FormEvent) => {
     event.preventDefault();
   };
   const canSubmit = (): boolean => {
-    const rectangle = rectangleRef.current;
-    return rectangle ? rectangle.rectangle.isValid() : false;
+    const rectInput = rectangleRef.current;
+    const teleportInput = teleportRef.current;
+    return rectInput && teleportInput
+      ? rectInput.rectangle.isValid() && teleportInput.destination !== ""
+      : false;
+  };
+
+  const onChange = () => {
+    const submit = submitRef.current;
+    if (submit) {
+      submit.disabled = !canSubmit();
+    }
   };
 
   return (
     <form onSubmit={onSubmitHandler}>
       <RectangleInput ref={rectangleRef} onChange={onChange} />
+      <TeleportActionInput ref={teleportRef} onChange={onChange} />
       <button type="submit" ref={submitRef} disabled={!canSubmit()}>
         Add
       </button>
@@ -30,4 +40,4 @@ const AddRectangleOption: React.FC<{ menuID: string }> = ({ menuID }) => {
   );
 };
 
-export default AddRectangleOption;
+export default AddRectangleTeleportOption;
