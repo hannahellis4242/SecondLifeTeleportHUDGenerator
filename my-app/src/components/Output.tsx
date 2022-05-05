@@ -19,19 +19,21 @@ const Output: React.FC = () => {
     if (out) {
       navigator.clipboard
         .writeText(out.innerText)
-        .then(() => alert("seed copied to clipboard"))
+        .then(() => alert("script copied to clipboard"))
         .catch(() => alert("could not copy"));
     }
   };
   return (
     <section className={classes.output}>
       <header className={classes.head}>
-        <button className={classes.generate} onClick={generate}>
-          Generate
-        </button>
-        <button className={classes.copy} onClick={copyText}>
-          copy
-        </button>
+        <div className={classes.control}>
+          <button className={classes.left} onClick={generate}>
+            Generate
+          </button>
+          <button className={classes.right} onClick={copyText}>
+            copy
+          </button>
+        </div>
       </header>
       <p className={classes.output_text} ref={output}></p>
     </section>

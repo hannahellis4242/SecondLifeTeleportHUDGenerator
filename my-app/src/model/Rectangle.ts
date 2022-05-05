@@ -5,4 +5,8 @@ export default class Rectangle {
     public right: number,
     public top: number
   ) {}
+
+  isValid(): boolean {
+    return this.left < this.right && this.bottom < this.top;
+  }
 }
