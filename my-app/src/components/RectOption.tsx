@@ -3,11 +3,13 @@ import Action from "../model/Action";
 import Rectangle from "../model/Rectangle";
 import ActionTag from "./ActionTag";
 import classes from "./RectangleOption.module.css";
+import RemoveOption from "./RemoveOption";
 
-const RectOption: React.FC<{ rect: Rectangle; action: Action }> = ({
-  rect,
-  action,
-}) => {
+const RectOption: React.FC<{
+  optionID: string;
+  rect: Rectangle;
+  action: Action;
+}> = ({ optionID, rect, action }) => {
   return (
     <section className={classes.option}>
       <header className={classes.head}>Rectangle</header>
@@ -30,6 +32,7 @@ const RectOption: React.FC<{ rect: Rectangle; action: Action }> = ({
         </tbody>
       </table>
       <ActionTag value={action} />
+      <RemoveOption optionId={optionID} />
     </section>
   );
 };

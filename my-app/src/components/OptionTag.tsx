@@ -5,9 +5,17 @@ import RectOption from "./RectOption";
 
 const OptionTag: React.FC<{ value: Option }> = ({ value }) => {
   if (value.rect) {
-    return <RectOption rect={value.rect} action={value.action} />;
+    return (
+      <RectOption optionID={value.id} rect={value.rect} action={value.action} />
+    );
   } else if (value.label) {
-    return <MenuOption label={value.label} action={value.action} />;
+    return (
+      <MenuOption
+        optionID={value.id}
+        label={value.label}
+        action={value.action}
+      />
+    );
   } else {
     return <div>!!!InvalidOption!!!</div>;
   }
