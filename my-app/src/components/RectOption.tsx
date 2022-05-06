@@ -12,18 +12,22 @@ const RectOption: React.FC<{ rect: Rectangle; action: Action }> = ({
     <section className={classes.option}>
       <header className={classes.head}>Rectangle</header>
       <table>
-        <tr>
-          <th>Left</th>
-          <th>Bottom</th>
-          <th>Right</th>
-          <th>Top</th>
-        </tr>
-        <tr>
-          <td>{rect.left}</td>
-          <td>{rect.bottom}</td>
-          <td>{rect.right}</td>
-          <td>{rect.top}</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>Left</th>
+            <th>Bottom</th>
+            <th>Right</th>
+            <th>Top</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{rect.left}</td>
+            <td>{rect.bottom}</td>
+            <td>{rect.right}</td>
+            <td>{rect.top}</td>
+          </tr>
+        </tbody>
       </table>
       <ActionTag value={action} />
     </section>

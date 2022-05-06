@@ -1,6 +1,23 @@
 import React, { useContext, useRef } from "react";
 import { ModelContext } from "../store/ModelContext";
+import { saveAs } from "file-saver";
+import { v4 } from "uuid";
 import classes from "./FileIO.module.css";
+import Menu from "../model/Menu";
+
+const identifyMenu = (menu: Menu) => {
+  if (!menu.id) {
+    menu.id = v4().toString();
+  }
+  menu.options.forEach((option) => {
+    if (!option.id) {
+      option.id = v4().toString();
+    }
+    if (option.action.menu) {
+      identifyMenu(option.action.menu);
+    }
+  });
+};
 
 const FileIO: React.FC = () => {
   const modelContext = useContext(ModelContext);
@@ -12,7 +29,11 @@ const FileIO: React.FC = () => {
       if (configFile) {
         configFile
           .text()
-          .then((data) => modelContext.setTopMenu(JSON.parse(data)));
+          .then((data) => JSON.parse(data))
+          .then((data) => {
+            identifyMenu(data);
+            return data;
+          });
       }
     }
   };
@@ -23,11 +44,10 @@ const FileIO: React.FC = () => {
     }
   };
   const saveConfig = () => {
-    window.open(
-      "data:application/txt," +
-        encodeURIComponent(JSON.stringify(modelContext.topMenu, null, 2)),
-      "config.json" //"_self"
-    );
+    const blob = new Blob([JSON.stringify(modelContext.topMenu, null, 2)], {
+      type: "application/json",
+    });
+    saveAs(blob, "config.json");
   };
   return (
     <section>
