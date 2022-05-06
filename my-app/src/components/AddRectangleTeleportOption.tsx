@@ -1,6 +1,5 @@
 import React, { useContext, useRef } from "react";
 import { ModelContext } from "../store/ModelContext";
-import TeleportActionInput from "./TeleportActionInput";
 import RectangleInput from "./RectangleInput";
 import Option from "../model/Option";
 import { v4 } from "uuid";
@@ -10,7 +9,7 @@ const AddRectangleTeleportOption: React.FC<{ menuID: string }> = ({
 }) => {
   const modelContext = useContext(ModelContext);
   const rectangleRef = useRef<RectangleInput>(null);
-  const teleportRef = useRef<TeleportActionInput>(null);
+  const teleportRef = useRef<HTMLInputElement>(null);
   const submitRef = useRef<HTMLButtonElement>(null);
 
   const onSubmitHandler = (event: React.FormEvent) => {
@@ -20,7 +19,7 @@ const AddRectangleTeleportOption: React.FC<{ menuID: string }> = ({
     if (rectInput && teleInput) {
       const option: Option = {
         id: v4().toString(),
-        action: { destination: teleInput.destination },
+        action: { destination: teleInput.value },
         rect: rectInput.rectangle,
       };
       modelContext.addOption(menuID, option);
@@ -30,7 +29,7 @@ const AddRectangleTeleportOption: React.FC<{ menuID: string }> = ({
     const rectInput = rectangleRef.current;
     const teleportInput = teleportRef.current;
     return rectInput && teleportInput
-      ? rectInput.rectangle.isValid() && teleportInput.destination !== ""
+      ? rectInput.rectangle.isValid() && teleportInput.value !== ""
       : false;
   };
 
@@ -44,7 +43,13 @@ const AddRectangleTeleportOption: React.FC<{ menuID: string }> = ({
   return (
     <form onSubmit={onSubmitHandler}>
       <RectangleInput ref={rectangleRef} onChange={onChange} />
-      <TeleportActionInput ref={teleportRef} onChange={onChange} />
+      <label htmlFor="destination">Teleport landmark name : </label>
+      <input
+        type="text"
+        ref={teleportRef}
+        onChange={onChange}
+        id="destination"
+      />
       <button type="submit" ref={submitRef} disabled={!canSubmit()}>
         Add
       </button>

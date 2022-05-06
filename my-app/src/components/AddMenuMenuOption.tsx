@@ -1,7 +1,6 @@
 import React, { useContext, useRef } from "react";
 import { v4 } from "uuid";
 import { ModelContext } from "../store/ModelContext";
-import TeleportActionInput from "./TeleportActionInput";
 import Option from "../model/Option";
 import Menu from "../model/Menu";
 
@@ -45,7 +44,7 @@ const AddMenuMenuOption: React.FC<{ menuID: string }> = ({ menuID }) => {
     <form onSubmit={onSubmitHandler}>
       <label htmlFor="label">Option Label : </label>
       <input ref={labelRef} type="text" id="label" onChange={onChange} />
-      <label htmlFor="message">Menu Message : </label>
+      <label htmlFor="message">Menu message : </label>
       <input ref={messageRef} type="text" id="message" onChange={onChange} />
       <button type="submit" ref={submitRef} disabled={!canSubmit()}>
         Add

@@ -1,13 +1,12 @@
 import React, { useContext, useRef } from "react";
 import { v4 } from "uuid";
 import { ModelContext } from "../store/ModelContext";
-import TeleportActionInput from "./TeleportActionInput";
 import Option from "../model/Option";
 
 const AddMenuTeleportOption: React.FC<{ menuID: string }> = ({ menuID }) => {
   const modelContext = useContext(ModelContext);
   const labelRef = useRef<HTMLInputElement>(null);
-  const teleportRef = useRef<TeleportActionInput>(null);
+  const teleportRef = useRef<HTMLInputElement>(null);
   const submitRef = useRef<HTMLButtonElement>(null);
 
   const onSubmitHandler = (event: React.FormEvent) => {
@@ -18,7 +17,7 @@ const AddMenuTeleportOption: React.FC<{ menuID: string }> = ({ menuID }) => {
       const option: Option = {
         id: v4().toString(),
         label: lableInput.value,
-        action: { destination: teleportInput.destination },
+        action: { destination: teleportInput.value },
       };
       modelContext.addOption(menuID, option);
     }
@@ -27,7 +26,7 @@ const AddMenuTeleportOption: React.FC<{ menuID: string }> = ({ menuID }) => {
     const lableInput = labelRef.current;
     const teleportInput = teleportRef.current;
     return lableInput && teleportInput
-      ? lableInput.value !== "" && teleportInput.destination !== ""
+      ? lableInput.value !== "" && teleportInput.value !== ""
       : false;
   };
 
@@ -42,7 +41,13 @@ const AddMenuTeleportOption: React.FC<{ menuID: string }> = ({ menuID }) => {
     <form onSubmit={onSubmitHandler}>
       <label htmlFor="label">Option Label : </label>
       <input ref={labelRef} type="text" id="label" onChange={onChange} />
-      <TeleportActionInput ref={teleportRef} onChange={onChange} />
+      <label htmlFor="destination">Teleport landmark name : </label>
+      <input
+        type="text"
+        ref={teleportRef}
+        onChange={onChange}
+        id="destination"
+      />
       <button type="submit" ref={submitRef} disabled={!canSubmit()}>
         Add
       </button>
