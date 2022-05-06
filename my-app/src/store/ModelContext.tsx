@@ -7,12 +7,14 @@ import { removeOption } from "../model/Utils/removeOption";
 
 interface IModelContext {
   topMenu: Menu;
+  setTopMenu(menu: Menu): void;
   addOption(id: string, option: Option): void;
   removeOption(id: string): void;
 }
 
 export const ModelContext = createContext<IModelContext>({
   topMenu: { id: v4().toString(), options: [] },
+  setTopMenu(menu: Menu): void {},
   addOption(id: string, option: Option) {},
   removeOption(id: string) {},
 });
@@ -25,6 +27,10 @@ const ModelContextProvider: React.FC<{ children: React.ReactNode }> = (
     options: [],
   });
 
+  const setMenuHandler = (menu: Menu) => {
+    setResult((current) => menu);
+  };
+
   const addOptionHandler = (id: string, option: Option) => {
     setResult((current) => addOption(current, id, option));
   };
@@ -35,6 +41,7 @@ const ModelContextProvider: React.FC<{ children: React.ReactNode }> = (
 
   const context = {
     topMenu: result,
+    setTopMenu: setMenuHandler,
     addOption: addOptionHandler,
     removeOption: removeOptionHandler,
   };
