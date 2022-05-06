@@ -7,14 +7,18 @@ import { removeOption } from "../model/Utils/removeOption";
 
 interface IModelContext {
   topMenu: Menu;
+  editId: string | null;
   setTopMenu(menu: Menu): void;
+  setEditId(id?: string): void;
   addOption(id: string, option: Option): void;
   removeOption(id: string): void;
 }
 
 export const ModelContext = createContext<IModelContext>({
   topMenu: { id: v4().toString(), options: [] },
+  editId: null,
   setTopMenu(menu: Menu): void {},
+  setEditId(id?: string): void {},
   addOption(id: string, option: Option) {},
   removeOption(id: string) {},
 });
@@ -22,26 +26,38 @@ export const ModelContext = createContext<IModelContext>({
 const ModelContextProvider: React.FC<{ children: React.ReactNode }> = (
   props
 ) => {
-  const [result, setResult] = useState<Menu>({
+  const [menuState, setMenuState] = useState<Menu>({
     id: v4().toString(),
     options: [],
   });
 
+  const [editState, setEditState] = useState<string | null>(null);
+
   const setMenuHandler = (menu: Menu) => {
-    setResult((current) => menu);
+    setMenuState((current) => menu);
   };
 
   const addOptionHandler = (id: string, option: Option) => {
-    setResult((current) => addOption(current, id, option));
+    setMenuState((current) => addOption(current, id, option));
   };
 
   const removeOptionHandler = (id: string) => {
-    setResult((current) => removeOption(current, id));
+    setMenuState((current) => removeOption(current, id));
+  };
+
+  const setEditIDHandler = (id?: string) => {
+    if (id) {
+      setEditState(() => id);
+    } else {
+      setEditState(() => null);
+    }
   };
 
   const context = {
-    topMenu: result,
+    topMenu: menuState,
+    editId: editState,
     setTopMenu: setMenuHandler,
+    setEditId: setEditIDHandler,
     addOption: addOptionHandler,
     removeOption: removeOptionHandler,
   };
