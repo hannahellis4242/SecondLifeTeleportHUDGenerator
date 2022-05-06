@@ -1,11 +1,10 @@
 import React, { useContext, useRef } from "react";
 import { ModelContext } from "../store/ModelContext";
 import { saveAs } from "file-saver";
-//import { v4 } from "uuid";
+import { v4 } from "uuid";
 import classes from "./FileIO.module.css";
-//import Menu from "../model/Menu";
+import Menu from "../model/Menu";
 
-/*
 const identifyMenu = (menu: Menu) => {
   if (!menu.id) {
     menu.id = v4().toString();
@@ -18,7 +17,8 @@ const identifyMenu = (menu: Menu) => {
       identifyMenu(option.action.menu);
     }
   });
-};*/
+  return menu;
+};
 
 const FileIO: React.FC = () => {
   const modelContext = useContext(ModelContext);
@@ -28,7 +28,11 @@ const FileIO: React.FC = () => {
     if (fileList) {
       const configFile = fileList.item(0);
       if (configFile) {
-        configFile.text().then((data) => JSON.parse(data));
+        configFile
+          .text()
+          .then((data) => JSON.parse(data))
+          .then(identifyMenu)
+          .then((data) => modelContext.setTopMenu(data));
       }
     }
   };
