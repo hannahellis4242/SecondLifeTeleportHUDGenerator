@@ -15,7 +15,7 @@ const MenuTag: React.FC<{ value: Menu }> = ({ value }) => {
       </header>
       {value.message ? <p>Message : {value.message} </p> : null}
       {value.options.map((option, index) => (
-        <OptionTag value={option} />
+        <OptionTag key={index} value={option} />
       ))}
       <section className={classes.controls}>
         <AddTeleportOption menuID={value.id} top={isTopLevel} />
