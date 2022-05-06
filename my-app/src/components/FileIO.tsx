@@ -5,8 +5,8 @@ import classes from "./FileIO.module.css";
 const FileIO: React.FC = () => {
   const modelContext = useContext(ModelContext);
   const inputRef = useRef<HTMLInputElement>(null);
-  const loadConfig = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const fileList = event.target.files;
+  const loadConfig = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    const fileList = target.files;
     if (fileList) {
       const configFile = fileList.item(0);
       if (configFile) {
@@ -22,8 +22,13 @@ const FileIO: React.FC = () => {
       input.click();
     }
   };
-  const saveConfig = () => {};
-
+  const saveConfig = () => {
+    window.open(
+      "data:application/txt," +
+        encodeURIComponent(JSON.stringify(modelContext.topMenu, null, 2)),
+      "config.json" //"_self"
+    );
+  };
   return (
     <section>
       <input
@@ -34,7 +39,6 @@ const FileIO: React.FC = () => {
         accept=".json"
         className={classes.not_visable}
       />
-
       <button onClick={loadConfigButton}>Load Config</button>
       <button onClick={saveConfig}>Save Config</button>
     </section>
