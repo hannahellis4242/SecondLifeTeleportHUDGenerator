@@ -1,19 +1,21 @@
-import React, { useContext } from "react";
+import React from "react";
 import FileIO from "./components/FileIO";
-import MenuTag from "./components/MenuTag";
 import Output from "./components/Output";
-import Raw from "./components/Raw";
-import { ModelContext } from "./store/ModelContext";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navigation from "./components/Navigation";
+import MenuView from "./components/MenuView";
 
 const App: React.FC = () => {
-  const modelContext = useContext(ModelContext);
   return (
-    <div>
-      <FileIO />
-      <MenuTag value={modelContext.topMenu} />
-      <Raw />
-      <Output />
-    </div>
+    <Router>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<FileIO />} />
+        <Route path="/view" element={<MenuView />} />
+        <Route path="/Edit" element={<div>TODO</div>} />
+        <Route path="/Generate" element={<Output />} />
+      </Routes>
+    </Router>
   );
 };
 
