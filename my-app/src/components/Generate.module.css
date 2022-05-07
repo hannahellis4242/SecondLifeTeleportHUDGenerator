@@ -10,16 +10,17 @@
 }
 
 .output_text {
-  font-style: italic;
+  margin: 0;
+  padding: 20px;
   font-family: "Roboto";
-  width: fit-content;
+  color: white;
+  background-color: rgb(7, 7, 58);
 }
 
 .output {
   margin: 5px;
   border: 1px solid black;
   border-radius: 5px;
-  width: 80%;
 }
 
 .control {
