@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef } from "react";
 import createScript from "../script/createScript";
 import { ModelContext } from "../store/ModelContext";
 import classes from "./Generate.module.css";
+import Main from "./Main";
 import Navigation from "./Navigation";
 
 const Generate: React.FC = () => {
@@ -27,17 +28,19 @@ const Generate: React.FC = () => {
   return (
     <section>
       <Navigation active="Generate" />
-      <main className={classes.output}>
-        <header className={classes.head}>
-          <div>Script Code</div>
-          <div className={classes.control}>
-            <button className={classes.right} onClick={copyText}>
-              copy
-            </button>
-          </div>
-        </header>
-        <p className={classes.output_text} ref={output}></p>
-      </main>
+      <Main>
+        <section className={classes.output}>
+          <header className={classes.head}>
+            <div>Script Code</div>
+            <div className={classes.control}>
+              <button className={classes.right} onClick={copyText}>
+                copy
+              </button>
+            </div>
+          </header>
+          <p className={classes.output_text} ref={output}></p>
+        </section>
+      </Main>
     </section>
   );
 };

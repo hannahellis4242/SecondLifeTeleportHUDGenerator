@@ -5,6 +5,7 @@ import { v4 } from "uuid";
 import classes from "./FileIO.module.css";
 import Menu from "../model/Menu";
 import Navigation from "./Navigation";
+import Main from "./Main";
 
 const identifyMenu = (menu: Menu) => {
   if (!menu.id) {
@@ -52,7 +53,7 @@ const FileIO: React.FC = () => {
   return (
     <section>
       <Navigation active="Home" />
-      <main>
+      <Main>
         <input
           ref={inputRef}
           type="file"
@@ -63,7 +64,7 @@ const FileIO: React.FC = () => {
         />
         <button onClick={loadConfigButton}>Load Config</button>
         <button onClick={saveConfig}>Save Config</button>
-      </main>
+      </Main>
     </section>
   );
 };
