@@ -1,0 +1,31 @@
+.navigation {
+  padding: 0;
+}
+
+.navigation ul {
+  margin: 0;
+  padding: 0;
+}
+
+.navigation li {
+  background-color: blue;
+  border: solid 1px black;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 5px;
+  display: inline-block;
+}
+
+.navigation li:hover {
+  background-color: darkblue;
+  color: white;
+}
+
+.navigation a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.navigation li.active {
+  color: white;
+}

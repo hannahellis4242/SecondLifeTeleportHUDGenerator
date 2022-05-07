@@ -4,6 +4,7 @@ import { saveAs } from "file-saver";
 import { v4 } from "uuid";
 import classes from "./FileIO.module.css";
 import Menu from "../model/Menu";
+import Navigation from "./Navigation";
 
 const identifyMenu = (menu: Menu) => {
   if (!menu.id) {
@@ -50,16 +51,19 @@ const FileIO: React.FC = () => {
   };
   return (
     <section>
-      <input
-        ref={inputRef}
-        type="file"
-        id="input"
-        onChange={loadConfig}
-        accept=".json"
-        className={classes.not_visable}
-      />
-      <button onClick={loadConfigButton}>Load Config</button>
-      <button onClick={saveConfig}>Save Config</button>
+      <Navigation active="Home" />
+      <main>
+        <input
+          ref={inputRef}
+          type="file"
+          id="input"
+          onChange={loadConfig}
+          accept=".json"
+          className={classes.not_visable}
+        />
+        <button onClick={loadConfigButton}>Load Config</button>
+        <button onClick={saveConfig}>Save Config</button>
+      </main>
     </section>
   );
 };

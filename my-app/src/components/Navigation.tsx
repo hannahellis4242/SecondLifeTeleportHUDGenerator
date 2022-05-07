@@ -1,20 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Page from "../model/Page";
+import classes from "./Navigation.module.css";
 
-const Navigation: React.FC = () => {
+const Navigation: React.FC<{ active: Page }> = ({ active }) => {
   return (
-    <nav>
+    <nav className={classes.navigation}>
       <ul>
-        <li>
+        <li className={active === "Home" ? classes.active : ""}>
           <Link to="/">Home</Link>
         </li>
-        <li>
+        <li className={active === "View" ? classes.active : ""}>
           <Link to="/View">View</Link>
         </li>
-        <li>
+        <li className={active === "Edit" ? classes.active : ""}>
           <Link to="/Edit">Edit</Link>
         </li>
-        <li>
+        <li className={active === "Generate" ? classes.active : ""}>
           <Link to="/Generate">Generate</Link>
         </li>
       </ul>
