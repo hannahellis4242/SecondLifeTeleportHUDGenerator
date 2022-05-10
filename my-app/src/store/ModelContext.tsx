@@ -14,9 +14,12 @@ interface IModelContext {
   removeOption(id: string): void;
 }
 
+//TODO remove this vvvv
+const topLevelID = v4();
+
 export const ModelContext = createContext<IModelContext>({
-  topMenu: { id: v4().toString(), options: [] },
-  editId: null,
+  topMenu: { id: topLevelID, options: [] },
+  editId: topLevelID,
   setTopMenu(menu: Menu): void {},
   setEditId(id?: string): void {},
   addOption(id: string, option: Option) {},
@@ -27,7 +30,7 @@ const ModelContextProvider: React.FC<{ children: React.ReactNode }> = (
   props
 ) => {
   const [menuState, setMenuState] = useState<Menu>({
-    id: v4().toString(),
+    id: v4(),
     options: [],
   });
 

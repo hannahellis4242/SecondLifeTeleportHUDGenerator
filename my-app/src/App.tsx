@@ -3,6 +3,7 @@ import FileIO from "./components/FileIO";
 import Generate from "./components/Generate";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MenuView from "./components/MenuView";
+import Edit from "./components/Edit";
 
 const App: React.FC = () => {
   return (
@@ -10,7 +11,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<FileIO />} />
         <Route path="/view" element={<MenuView />} />
-        <Route path="/Edit" element={<div>TODO</div>} />
+        <Route path="/Edit" element={<Edit />} />
         <Route path="/Generate" element={<Generate />} />
       </Routes>
     </Router>
