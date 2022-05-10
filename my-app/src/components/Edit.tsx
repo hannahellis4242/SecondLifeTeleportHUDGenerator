@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { ModelContext } from "../store/ModelContext";
 import Main from "./Main";
 import Navigation from "./Navigation";
-import MenuTag from "./MenuTag";
 import Menu from "../model/Menu";
+import EditMenuTag from "./EditMenuTag";
 
 const findMenu = (menu: Menu, editId: string | null): Menu | null => {
   if (editId && menu.id === editId) {
@@ -20,8 +20,8 @@ const Edit: React.FC = () => {
   const menu = findMenu(topMenu, editId);
   return (
     <section>
-      <Navigation active="Home" />
-      <Main>{menu ? <MenuTag value={menu} /> : null}</Main>
+      <Navigation active="Edit" />
+      <Main>{menu ? <EditMenuTag value={menu} /> : null}</Main>
     </section>
   );
 };

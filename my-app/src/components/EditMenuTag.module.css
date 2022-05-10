@@ -1,7 +1,7 @@
 .menu {
   border: 1px solid black;
   border-radius: 5px;
-  margin: 2px;
+  margin : 2px;
 }
 
 .top_level {
@@ -14,4 +14,9 @@
   background-color: lightcoral;
   border-bottom: 1px solid black;
   padding: 5px;
+}
+
+.controls {
+  background-color: grey;
+  border-top: 1px soild black;
 }
