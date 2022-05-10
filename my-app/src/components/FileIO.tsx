@@ -2,10 +2,11 @@ import React, { useContext, useRef } from "react";
 import { ModelContext } from "../store/ModelContext";
 import { saveAs } from "file-saver";
 import { v4 } from "uuid";
-import classes from "./FileIO.module.css";
 import Menu from "../model/Menu";
+import { useNavigate } from "react-router-dom";
 import Navigation from "./Navigation";
 import Main from "./Main";
+import classes from "./FileIO.module.css";
 
 const identifyMenu = (menu: Menu) => {
   if (!menu.id) {
@@ -25,6 +26,7 @@ const identifyMenu = (menu: Menu) => {
 const FileIO: React.FC = () => {
   const modelContext = useContext(ModelContext);
   const inputRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
   const loadConfig = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     const fileList = target.files;
     if (fileList) {
@@ -34,7 +36,8 @@ const FileIO: React.FC = () => {
           .text()
           .then((data) => JSON.parse(data))
           .then(identifyMenu)
-          .then((data) => modelContext.setTopMenu(data));
+          .then((data) => modelContext.setTopMenu(data))
+          .then(() => navigate("/View"));
       }
     }
   };
