@@ -23,6 +23,18 @@ const identifyMenu = (menu: Menu) => {
   return menu;
 };
 
+const parentifyMenu = (menu: Menu, parent?: Menu) => {
+  if (!menu.parentId && parent) {
+    menu.parentId = parent.id;
+  }
+  menu.options.forEach(({ action }) => {
+    if (action.menu) {
+      parentifyMenu(action.menu, menu);
+    }
+  });
+  return menu;
+};
+
 const FileIO: React.FC = () => {
   const modelContext = useContext(ModelContext);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -36,6 +48,7 @@ const FileIO: React.FC = () => {
           .text()
           .then((data) => JSON.parse(data))
           .then(identifyMenu)
+          .then(parentifyMenu)
           .then((data) => modelContext.setTopMenu(data))
           .then(() => navigate("/View"));
       }
