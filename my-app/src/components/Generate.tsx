@@ -1,3 +1,4 @@
+import saveAs from "file-saver";
 import React, { useContext, useEffect, useRef } from "react";
 import createScript from "../script/createScript";
 import { ModelContext } from "../store/ModelContext";
@@ -25,6 +26,17 @@ const Generate: React.FC = () => {
         .catch(() => alert("could not copy"));
     }
   };
+
+  const saveScript = () => {
+    const out = output.current;
+    if (out) {
+      const blob = new Blob([out.innerText], {
+        type: "application/text",
+      });
+      saveAs(blob, "script.lsl");
+    }
+  };
+
   return (
     <section>
       <Navigation active="Generate" />
@@ -35,6 +47,9 @@ const Generate: React.FC = () => {
             <div className={classes.control}>
               <button className={classes.right} onClick={copyText}>
                 copy
+              </button>
+              <button className={classes.right} onClick={saveScript}>
+                Save
               </button>
             </div>
           </header>
