@@ -1,6 +1,6 @@
 import React from "react";
 import Menu from "../../model/Menu";
-import OptionTag from "../OptionTag";
+import OptionTag from "./OptionTag";
 import classes from "./MenuTag.module.css";
 
 const MenuTag: React.FC<{ value: Menu }> = ({ value }) => {

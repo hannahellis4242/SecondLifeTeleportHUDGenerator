@@ -1,7 +1,7 @@
 import React from "react";
-import Option from "../model/Option";
-import MenuOption from "./View/MenuOption";
-import RectOption from "./View/RectOption";
+import Option from "../../model/Option";
+import MenuOption from "./MenuOption";
+import RectOption from "./RectOption";
 
 const OptionTag: React.FC<{ value: Option }> = ({ value }) => {
   if (value.rect) {

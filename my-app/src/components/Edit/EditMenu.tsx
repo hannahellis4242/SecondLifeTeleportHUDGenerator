@@ -1,6 +1,6 @@
 import React from "react";
 import Menu from "../../model/Menu";
-import OptionTag from "../OptionTag";
+import OptionTag from "../View/OptionTag";
 import classes from "./MenuTag.module.css";
 import AddTeleportOption from "./AddTeleportOption";
 import AddMenuOption from "./AddMenuOption";
