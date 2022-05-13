@@ -4,6 +4,8 @@ import Main from "../Main";
 import Navigation from "../Navigation";
 import EditMenu from "./EditMenu";
 import Menu from "../../model/Menu";
+import Option from "../../model/Option";
+import EditOptionTag from "./EditOptionTag";
 
 const findMenu = (menu: Menu, editId: string | null): Menu | null => {
   if (editId && menu.id === editId) {
@@ -15,13 +17,35 @@ const findMenu = (menu: Menu, editId: string | null): Menu | null => {
   return subMenu ? subMenu : null;
 };
 
+const findOption = (menu: Menu, editId: string | null): Option | null => {
+  if (editId) {
+    const child = menu.options.find(({ id }) => id === editId);
+    if (child) {
+      return child;
+    }
+    const subOption = menu.options
+      .map(({ action }) => action.menu)
+      .map((menu) => (menu ? findOption(menu, editId) : null))
+      .find((x) => x !== null);
+    return subOption ? subOption : null;
+  }
+  return null;
+};
+
 const Edit: React.FC = () => {
   const { topMenu, editId } = useContext(ModelContext);
   const menu = findMenu(topMenu, editId);
+  const option = findOption(topMenu, editId);
   return (
     <section>
       <Navigation active="Edit" />
-      <Main>{menu ? <EditMenu value={menu} /> : null}</Main>
+      <Main>
+        {menu ? (
+          <EditMenu value={menu} />
+        ) : option ? (
+          <EditOptionTag value={option} />
+        ) : null}
+      </Main>
     </section>
   );
 };
