@@ -1,6 +1,6 @@
 import React from "react";
 import Action from "../../model/Action";
-import ActionTag from "../View/ActionTag";
+import ActionTag from "./ActionTag";
 import classes from "./MenuOption.module.css";
 import RemoveOption from "./RemoveOption";
 
