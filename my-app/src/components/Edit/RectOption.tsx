@@ -12,7 +12,10 @@ const RectOption: React.FC<{
 }> = ({ optionID, rect, action }) => {
   return (
     <section className={classes.option}>
-      <header className={classes.head}>Rectangle</header>
+      <header className={classes.head}>
+        Rectangle
+        <RemoveOption optionId={optionID} />
+      </header>
       <table>
         <thead>
           <tr>
@@ -32,7 +35,6 @@ const RectOption: React.FC<{
         </tbody>
       </table>
       <ActionTag value={action} />
-      <RemoveOption optionId={optionID} />
     </section>
   );
 };

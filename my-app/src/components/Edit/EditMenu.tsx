@@ -1,11 +1,11 @@
 import React from "react";
 import Menu from "../../model/Menu";
-import OptionTag from "../View/OptionTag";
-import classes from "./MenuTag.module.css";
+import OptionTag from "./OptionTag";
+import classes from "./EditMenu.module.css";
 import AddTeleportOption from "./AddTeleportOption";
 import AddMenuOption from "./AddMenuOption";
 
-const MenuTag: React.FC<{ value: Menu }> = ({ value }) => {
+const EditMenu: React.FC<{ value: Menu }> = ({ value }) => {
   const isTopLevel = !value.parentId;
   return (
     <section className={classes.menu}>
@@ -25,4 +25,4 @@ const MenuTag: React.FC<{ value: Menu }> = ({ value }) => {
   );
 };
 
-export default MenuTag;
+export default EditMenu;
