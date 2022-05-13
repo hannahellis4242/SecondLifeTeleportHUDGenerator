@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import Action from "../../model/Action";
 import Rectangle from "../../model/Rectangle";
+import { ModelContext } from "../../store/ModelContext";
 import ActionTag from "./ActionTag";
 import classes from "./RectangleOption.module.css";
 
@@ -9,9 +11,20 @@ const RectOption: React.FC<{
   rect: Rectangle;
   action: Action;
 }> = ({ optionID, rect, action }) => {
+  const { setEditId } = useContext(ModelContext);
+  const navigate = useNavigate();
+  const doEdit = () => {
+    setEditId(optionID);
+    navigate("/Edit");
+  };
   return (
     <section className={classes.option}>
-      <header className={classes.head}>Rectangle</header>
+      <header className={classes.head}>
+        Rectangle
+        <button className={classes.btn} onClick={doEdit}>
+          Edit
+        </button>
+      </header>
       <table>
         <thead>
           <tr>
