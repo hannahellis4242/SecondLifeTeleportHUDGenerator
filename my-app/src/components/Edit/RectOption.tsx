@@ -9,12 +9,13 @@ const RectOption: React.FC<{
   optionID: string;
   rect: Rectangle;
   action: Action;
-}> = ({ optionID, rect, action }) => {
+  fromMenu: boolean;
+}> = ({ optionID, rect, action, fromMenu }) => {
   return (
     <section className={classes.option}>
       <header className={classes.head}>
         Rectangle
-        <RemoveOption optionId={optionID} />
+        {fromMenu ? <RemoveOption optionId={optionID} /> : null}
       </header>
       <table>
         <thead>

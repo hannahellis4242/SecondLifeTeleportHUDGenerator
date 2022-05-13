@@ -8,11 +8,12 @@ const MenuOption: React.FC<{
   optionID: string;
   label: string;
   action: Action;
-}> = ({ optionID, label, action }) => (
+  fromMenu: boolean;
+}> = ({ optionID, label, action, fromMenu }) => (
   <section className={classes.option}>
     <header className={classes.head}>Menu Option Label : {label}</header>
     <ActionTag value={action} />
-    <RemoveOption optionId={optionID} />
+    {fromMenu ? <RemoveOption optionId={optionID} /> : null}
   </section>
 );
 

@@ -43,7 +43,7 @@ const Edit: React.FC = () => {
         {menu ? (
           <EditMenu value={menu} />
         ) : option ? (
-          <EditOptionTag value={option} />
+          <EditOptionTag value={option} fromMenu={false} />
         ) : null}
       </Main>
     </section>
