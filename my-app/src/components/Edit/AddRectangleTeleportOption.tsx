@@ -1,26 +1,25 @@
 import React, { useContext, useRef } from "react";
-import { ModelContext } from "../store/ModelContext";
-import RectangleInput from "./RectangleInput";
-import Option from "../model/Option";
+import { ModelContext } from "../../store/ModelContext";
+import RectangleInput from "../RectangleInput";
+import Option from "../../model/Option";
 import { v4 } from "uuid";
-import Menu from "../model/Menu";
 
-const AddRectangleMenuOption: React.FC<{ menuID: string }> = ({ menuID }) => {
+const AddRectangleTeleportOption: React.FC<{ menuID: string }> = ({
+  menuID,
+}) => {
   const modelContext = useContext(ModelContext);
   const rectangleRef = useRef<RectangleInput>(null);
-  const messageRef = useRef<HTMLInputElement>(null);
+  const teleportRef = useRef<HTMLInputElement>(null);
   const submitRef = useRef<HTMLButtonElement>(null);
 
   const onSubmitHandler = (event: React.FormEvent) => {
     event.preventDefault();
     const rectInput = rectangleRef.current;
-    const messageInput = messageRef.current;
-    if (rectInput && messageInput) {
+    const teleInput = teleportRef.current;
+    if (rectInput && teleInput) {
       const option: Option = {
         id: v4().toString(),
-        action: {
-          menu: new Menu(v4().toString(), [], menuID, messageInput.value),
-        },
+        action: { destination: teleInput.value },
         rect: rectInput.rectangle,
       };
       modelContext.addOption(menuID, option);
@@ -28,9 +27,9 @@ const AddRectangleMenuOption: React.FC<{ menuID: string }> = ({ menuID }) => {
   };
   const canSubmit = (): boolean => {
     const rectInput = rectangleRef.current;
-    const messageInput = messageRef.current;
-    return rectInput && messageInput
-      ? rectInput.rectangle.isValid() && messageInput.value !== ""
+    const teleportInput = teleportRef.current;
+    return rectInput && teleportInput
+      ? rectInput.rectangle.isValid() && teleportInput.value !== ""
       : false;
   };
 
@@ -44,13 +43,18 @@ const AddRectangleMenuOption: React.FC<{ menuID: string }> = ({ menuID }) => {
   return (
     <form onSubmit={onSubmitHandler}>
       <RectangleInput ref={rectangleRef} onChange={onChange} />
-      <label htmlFor="message">Menu message : </label>
-      <input ref={messageRef} type="text" id="message" onChange={onChange} />
-      <button type="submit" ref={submitRef}>
+      <label htmlFor="destination">Teleport landmark name : </label>
+      <input
+        type="text"
+        ref={teleportRef}
+        onChange={onChange}
+        id="destination"
+      />
+      <button type="submit" ref={submitRef} disabled={!canSubmit()}>
         Add
       </button>
     </form>
   );
 };
 
-export default AddRectangleMenuOption;
+export default AddRectangleTeleportOption;

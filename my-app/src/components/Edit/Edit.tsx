@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { ModelContext } from "../store/ModelContext";
-import Main from "./Main";
-import Navigation from "./Navigation";
-import MenuTag from "./MenuTag";
-import Menu from "../model/Menu";
+import { ModelContext } from "../../store/ModelContext";
+import Main from "../Main";
+import Navigation from "../Navigation";
+import MenuTag from "../View/MenuTag";
+import Menu from "../../model/Menu";
 
 const findMenu = (menu: Menu, editId: string | null): Menu | null => {
   if (editId && menu.id === editId) {

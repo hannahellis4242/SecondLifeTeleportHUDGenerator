@@ -1,9 +1,7 @@
 import React from "react";
-import Menu from "../model/Menu";
-import OptionTag from "./OptionTag";
+import Menu from "../../model/Menu";
+import OptionTag from "../OptionTag";
 import classes from "./MenuTag.module.css";
-import AddTeleportOption from "./AddTeleportOption";
-import AddMenuOption from "./AddMenuOption";
 
 const MenuTag: React.FC<{ value: Menu }> = ({ value }) => {
   const isTopLevel = !value.parentId;
@@ -17,10 +15,6 @@ const MenuTag: React.FC<{ value: Menu }> = ({ value }) => {
       {value.options.map((option, index) => (
         <OptionTag key={index} value={option} />
       ))}
-      <section className={classes.controls}>
-        <AddTeleportOption menuID={value.id} top={isTopLevel} />
-        <AddMenuOption menuID={value.id} top={isTopLevel} />
-      </section>
     </section>
   );
 };

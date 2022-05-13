@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import MenuTag from "./MenuTag";
-import { ModelContext } from "../store/ModelContext";
-import Navigation from "./Navigation";
-import Main from "./Main";
+import { ModelContext } from "../../store/ModelContext";
+import Navigation from "../Navigation";
+import Main from "../Main";
 
-const MenuView: React.FC = () => {
+const View: React.FC = () => {
   const modelContext = useContext(ModelContext);
   return (
     <section>
@@ -16,4 +16,4 @@ const MenuView: React.FC = () => {
   );
 };
 
-export default MenuView;
+export default View;

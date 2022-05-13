@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ModelContext } from "../store/ModelContext";
+import { ModelContext } from "../../store/ModelContext";
 
 const RemoveOption: React.FC<{ optionId: string }> = ({ optionId }) => {
   const modelContext = useContext(ModelContext);

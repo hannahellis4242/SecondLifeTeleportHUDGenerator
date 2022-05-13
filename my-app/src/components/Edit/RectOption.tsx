@@ -1,7 +1,7 @@
 import React from "react";
-import Action from "../model/Action";
-import Rectangle from "../model/Rectangle";
-import ActionTag from "./ActionTag";
+import Action from "../../model/Action";
+import Rectangle from "../../model/Rectangle";
+import ActionTag from "../View/ActionTag";
 import classes from "./RectangleOption.module.css";
 import RemoveOption from "./RemoveOption";
 

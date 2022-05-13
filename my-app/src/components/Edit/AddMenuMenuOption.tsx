@@ -1,8 +1,8 @@
 import React, { useContext, useRef } from "react";
 import { v4 } from "uuid";
-import { ModelContext } from "../store/ModelContext";
-import Option from "../model/Option";
-import Menu from "../model/Menu";
+import { ModelContext } from "../../store/ModelContext";
+import Option from "../../model/Option";
+import Menu from "../../model/Menu";
 
 const AddMenuMenuOption: React.FC<{ menuID: string }> = ({ menuID }) => {
   const modelContext = useContext(ModelContext);

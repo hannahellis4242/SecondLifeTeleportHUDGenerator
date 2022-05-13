@@ -1,5 +1,5 @@
 import React from "react";
-import Action from "../model/Action";
+import Action from "../../model/Action";
 import MenuTag from "./MenuTag";
 import Teleport from "./Teleport";
 

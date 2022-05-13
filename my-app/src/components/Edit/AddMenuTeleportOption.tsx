@@ -1,35 +1,32 @@
 import React, { useContext, useRef } from "react";
-import { ModelContext } from "../store/ModelContext";
-import RectangleInput from "./RectangleInput";
-import Option from "../model/Option";
 import { v4 } from "uuid";
+import { ModelContext } from "../../store/ModelContext";
+import Option from "../../model/Option";
 
-const AddRectangleTeleportOption: React.FC<{ menuID: string }> = ({
-  menuID,
-}) => {
+const AddMenuTeleportOption: React.FC<{ menuID: string }> = ({ menuID }) => {
   const modelContext = useContext(ModelContext);
-  const rectangleRef = useRef<RectangleInput>(null);
+  const labelRef = useRef<HTMLInputElement>(null);
   const teleportRef = useRef<HTMLInputElement>(null);
   const submitRef = useRef<HTMLButtonElement>(null);
 
   const onSubmitHandler = (event: React.FormEvent) => {
     event.preventDefault();
-    const rectInput = rectangleRef.current;
-    const teleInput = teleportRef.current;
-    if (rectInput && teleInput) {
+    const lableInput = labelRef.current;
+    const teleportInput = teleportRef.current;
+    if (lableInput && teleportInput) {
       const option: Option = {
         id: v4().toString(),
-        action: { destination: teleInput.value },
-        rect: rectInput.rectangle,
+        label: lableInput.value,
+        action: { destination: teleportInput.value },
       };
       modelContext.addOption(menuID, option);
     }
   };
   const canSubmit = (): boolean => {
-    const rectInput = rectangleRef.current;
+    const lableInput = labelRef.current;
     const teleportInput = teleportRef.current;
-    return rectInput && teleportInput
-      ? rectInput.rectangle.isValid() && teleportInput.value !== ""
+    return lableInput && teleportInput
+      ? lableInput.value !== "" && teleportInput.value !== ""
       : false;
   };
 
@@ -42,7 +39,8 @@ const AddRectangleTeleportOption: React.FC<{ menuID: string }> = ({
 
   return (
     <form onSubmit={onSubmitHandler}>
-      <RectangleInput ref={rectangleRef} onChange={onChange} />
+      <label htmlFor="label">Option Label : </label>
+      <input ref={labelRef} type="text" id="label" onChange={onChange} />
       <label htmlFor="destination">Teleport landmark name : </label>
       <input
         type="text"
@@ -57,4 +55,4 @@ const AddRectangleTeleportOption: React.FC<{ menuID: string }> = ({
   );
 };
 
-export default AddRectangleTeleportOption;
+export default AddMenuTeleportOption;
