@@ -20,7 +20,7 @@ const Edit: React.FC = () => {
   const menu = findMenu(topMenu, editId);
   return (
     <section>
-      <Navigation active="Home" />
+      <Navigation active="Edit" />
       <Main>{menu ? <EditMenu value={menu} /> : null}</Main>
     </section>
   );
