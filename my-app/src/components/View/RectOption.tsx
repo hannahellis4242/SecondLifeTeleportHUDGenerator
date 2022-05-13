@@ -3,7 +3,6 @@ import Action from "../../model/Action";
 import Rectangle from "../../model/Rectangle";
 import ActionTag from "./ActionTag";
 import classes from "./RectangleOption.module.css";
-import RemoveOption from "../Edit/RemoveOption";
 
 const RectOption: React.FC<{
   optionID: string;
@@ -32,7 +31,6 @@ const RectOption: React.FC<{
         </tbody>
       </table>
       <ActionTag value={action} />
-      <RemoveOption optionId={optionID} />
     </section>
   );
 };
