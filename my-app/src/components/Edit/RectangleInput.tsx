@@ -1,15 +1,18 @@
 import React from "react";
-import Rectangle from "../model/Rectangle";
+import Rectangle from "../../model/Rectangle";
 
 type ChangeDirection = "left" | "right" | "top" | "bottom";
-class RectangleInput extends React.Component<{ onChange?: () => void }> {
+class RectangleInput extends React.Component<{
+  onChange?: () => void;
+  rect?: Rectangle;
+}> {
   onChange?: () => void;
   ref: React.RefObject<RectangleInput>;
   rectangle: Rectangle;
-  constructor(props: { onChange?: () => void }) {
+  constructor(props: { onChange?: () => void; rect?: Rectangle }) {
     super(props);
     this.ref = React.createRef();
-    this.rectangle = new Rectangle(0, 0, 1, 1);
+    this.rectangle = props.rect ? props.rect : new Rectangle(0, 0, 1, 1);
     this.onChange = props.onChange;
   }
   render() {

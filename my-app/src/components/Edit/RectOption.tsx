@@ -2,6 +2,7 @@ import React from "react";
 import Action from "../../model/Action";
 import Rectangle from "../../model/Rectangle";
 import ActionTag from "./ActionTag";
+import RectangleInput from "./RectangleInput";
 import classes from "./RectangleOption.module.css";
 import RemoveOption from "./RemoveOption";
 
@@ -17,24 +18,7 @@ const RectOption: React.FC<{
         Rectangle
         {fromMenu ? <RemoveOption optionId={optionID} /> : null}
       </header>
-      <table>
-        <thead>
-          <tr>
-            <th>Left</th>
-            <th>Bottom</th>
-            <th>Right</th>
-            <th>Top</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{rect.left}</td>
-            <td>{rect.bottom}</td>
-            <td>{rect.right}</td>
-            <td>{rect.top}</td>
-          </tr>
-        </tbody>
-      </table>
+      <RectangleInput rect={rect} />
       <ActionTag value={action} />
     </section>
   );

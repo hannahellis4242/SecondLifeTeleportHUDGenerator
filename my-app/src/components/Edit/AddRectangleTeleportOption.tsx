@@ -1,6 +1,6 @@
 import React, { useContext, useRef } from "react";
 import { ModelContext } from "../../store/ModelContext";
-import RectangleInput from "../RectangleInput";
+import RectangleInput from "./RectangleInput";
 import Option from "../../model/Option";
 import { v4 } from "uuid";
 
