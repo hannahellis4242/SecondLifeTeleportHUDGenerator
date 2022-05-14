@@ -4,6 +4,7 @@ import Option from "../model/Option";
 import { v4 } from "uuid";
 import { addOption } from "../model/Utils/addOption";
 import { removeOption } from "../model/Utils/removeOption";
+import { updateOption } from "../model/Utils/updateOption";
 
 interface IModelContext {
   topMenu: Menu;
@@ -12,6 +13,7 @@ interface IModelContext {
   setEditId(id?: string): void;
   addOption(id: string, option: Option): void;
   removeOption(id: string): void;
+  updateOption(menuId: string, optionId: string, option: Option): void;
 }
 
 //TODO remove this vvvv
@@ -24,6 +26,7 @@ export const ModelContext = createContext<IModelContext>({
   setEditId(id?: string): void {},
   addOption(id: string, option: Option) {},
   removeOption(id: string) {},
+  updateOption(menuId: string, optionId: string, option: Option) {},
 });
 
 const ModelContextProvider: React.FC<{ children: React.ReactNode }> = (
@@ -56,6 +59,26 @@ const ModelContextProvider: React.FC<{ children: React.ReactNode }> = (
     }
   };
 
+  const updateOptionHandler = (
+    menuId: string,
+    optionId: string,
+    option: Option
+  ) => {
+    setMenuState((current) => {
+      const { result, success } = updateOption(
+        current,
+        menuId,
+        optionId,
+        option
+      );
+      if (!success) {
+        //just going to it
+        console.log("could not update");
+      }
+      return result;
+    });
+  };
+
   const context = {
     topMenu: menuState,
     editId: editState,
@@ -63,6 +86,7 @@ const ModelContextProvider: React.FC<{ children: React.ReactNode }> = (
     setEditId: setEditIDHandler,
     addOption: addOptionHandler,
     removeOption: removeOptionHandler,
+    updateOption: updateOptionHandler,
   };
   return (
     <ModelContext.Provider value={context}>
