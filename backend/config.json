@@ -19,10 +19,46 @@
               "action": {
                 "menu": {
                   "id": "8da8db28-1abf-4a7e-8987-9079a87462d4",
-                  "options": [],
+                  "options": [
+                    {
+                      "id": "93df5538-437d-4105-ba30-381656eae1ea",
+                      "label": "sub",
+                      "action": {
+                        "menu": {
+                          "id": "ca9be822-1b28-4773-8f2c-7736fc0b03c0",
+                          "options": [
+                            {
+                              "id": "e66cf22a-313e-4b2c-8434-43d7dd36e024",
+                              "label": "sub",
+                              "action": {
+                                "menu": {
+                                  "id": "26faa583-f4d9-4609-a4d7-92a7e1041955",
+                                  "options": [
+                                    {
+                                      "id": "896a31d0-691d-4f56-aa95-d95773cfc5dc",
+                                      "label": "A",
+                                      "action": {
+                                        "destination": "A"
+                                      }
+                                    }
+                                  ],
+                                  "parentId": "ca9be822-1b28-4773-8f2c-7736fc0b03c0",
+                                  "message": "sub",
+                                  "collapsed": false
+                                }
+                              }
+                            }
+                          ],
+                          "parentId": "8da8db28-1abf-4a7e-8987-9079a87462d4",
+                          "message": "sub",
+                          "collapsed": false
+                        }
+                      }
+                    }
+                  ],
                   "parentId": "5c0bb9e4-43cf-4467-b62a-147a1e2ae125",
                   "message": "sub",
-                  "collapsed": true
+                  "collapsed": false
                 }
               }
             }
