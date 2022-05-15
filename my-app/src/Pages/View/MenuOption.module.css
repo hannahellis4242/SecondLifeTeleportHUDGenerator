@@ -6,6 +6,8 @@
 .head {
   border-bottom: 1px solid black;
   background-color: aquamarine;
+  overflow: auto;
+  padding: 5px;
 }
 .btn {
   float: right;

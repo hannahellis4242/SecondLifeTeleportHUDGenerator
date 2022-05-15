@@ -5,15 +5,17 @@
 }
 
 .top_level {
-  background-color: darkred;
+  background-color: red;
   border-bottom: 1px solid black;
   padding: 5px;
+  overflow: auto;
 }
 
 .head {
   background-color: lightcoral;
   border-bottom: 1px solid black;
   padding: 5px;
+  overflow: auto;
 }
 
 .btn {
