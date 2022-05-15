@@ -1,0 +1,56 @@
+{
+  "id": "90906df2-2871-4e9c-8a20-ba0ba1e53022",
+  "options": [
+    {
+      "id": "d1f20210-fc97-4afa-b8a6-8b4c2206ea29",
+      "rect": {
+        "left": 0,
+        "bottom": 0,
+        "right": 1,
+        "top": 1
+      },
+      "action": {
+        "menu": {
+          "id": "5c0bb9e4-43cf-4467-b62a-147a1e2ae125",
+          "options": [
+            {
+              "id": "907ffa5b-78a2-4f62-a9cd-949c74eb2404",
+              "label": "sub",
+              "action": {
+                "menu": {
+                  "id": "8da8db28-1abf-4a7e-8987-9079a87462d4",
+                  "options": [],
+                  "parentId": "5c0bb9e4-43cf-4467-b62a-147a1e2ae125",
+                  "message": "sub",
+                  "collapsed": true
+                }
+              }
+            }
+          ],
+          "parentId": "90906df2-2871-4e9c-8a20-ba0ba1e53022",
+          "message": "test",
+          "collapsed": false
+        }
+      }
+    },
+    {
+      "id": "4fb4a058-0837-4b72-aba0-174c0ef7d53b",
+      "rect": {
+        "left": 0,
+        "bottom": 0,
+        "right": 1,
+        "top": 1
+      },
+      "action": {
+        "menu": {
+          "id": "032bfc4f-6fa2-4c52-ac9f-51d825567cb2",
+          "options": [],
+          "parentId": "90906df2-2871-4e9c-8a20-ba0ba1e53022",
+          "message": "Test2",
+          "collapsed": true
+        }
+      }
+    }
+  ],
+  "collapsed": false
+}
