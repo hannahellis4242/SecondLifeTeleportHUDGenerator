@@ -1,10 +1,16 @@
-.option{
-    margin:5px;
-    border: 1px solid black;
-    border-radius: 5px;
+.option {
+  margin: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
-.head{
-    background-color: lightblue;
-    border-bottom: 1px solid black;
+.head {
+  background-color: lightblue;
+  border-bottom: 1px solid black;
+  padding: 5px;
+  overflow: auto;
+}
+
+.body {
+  padding: 5px;
 }
