@@ -7,7 +7,7 @@ import ActionEdit from "./ActionEdit";
 import classes from "./MenuOption.module.css";
 
 const MenuOptionEdit: FunctionComponent<{ option: Option }> = ({ option }) => {
-  const modelContext = useContext(ModelContext);
+  const { updateOption } = useContext(ModelContext);
   const labelInputRef = useRef<HTMLInputElement>(null);
   const teleportRef = useRef<HTMLInputElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -36,13 +36,19 @@ const MenuOptionEdit: FunctionComponent<{ option: Option }> = ({ option }) => {
     if (labelInput) {
       const teleport = teleportRef.current;
       if (teleport) {
-        modelContext.updateOption(option.id, {
+        updateOption(option.id, {
           id: option.id,
           label: labelInput.value,
           action: { destination: teleport.value },
         });
-        navigate(view);
+      } else {
+        updateOption(option.id, {
+          id: option.id,
+          label: labelInput.value,
+          action: option.action,
+        });
       }
+      navigate(view);
     }
   };
 
