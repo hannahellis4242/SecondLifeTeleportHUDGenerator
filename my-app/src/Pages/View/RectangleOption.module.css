@@ -5,10 +5,16 @@
 }
 
 .head {
+  padding: 5px;
   background-color: lightblue;
   border-bottom: 1px solid black;
+  overflow: auto;
 }
 
 .btn {
   float: right;
+}
+
+.rect {
+  padding: 5px;
 }
