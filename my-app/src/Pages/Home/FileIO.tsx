@@ -78,6 +78,11 @@ const FileIO: FunctionComponent = () => {
     });
     saveAs(blob, "config.json");
   };
+
+  const createNew = () => {
+    modelContext.setTopMenu(new Menu(v4(), []));
+  };
+
   return (
     <section>
       <Navigation active="Home" />
@@ -92,6 +97,7 @@ const FileIO: FunctionComponent = () => {
         />
         <button onClick={loadConfigButton}>Load Config</button>
         <button onClick={saveConfig}>Save Config</button>
+        <button onClick={createNew}>New</button>
       </Main>
     </section>
   );
