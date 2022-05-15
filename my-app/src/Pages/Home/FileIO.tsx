@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Navigation from "../components/Navigation";
 import Main from "../components/Main";
 import classes from "./FileIO.module.css";
+import { view } from "../components/urlPath";
 
 const identifyMenu = (menu: Menu) => {
   if (!menu.id) {
@@ -50,7 +51,7 @@ const FileIO: React.FC = () => {
           .then(identifyMenu)
           .then(parentifyMenu)
           .then((data) => modelContext.setTopMenu(data))
-          .then(() => navigate("/View"));
+          .then(() => navigate(view));
       }
     }
   };

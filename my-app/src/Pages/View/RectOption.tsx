@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Action from "../../model/Action";
 import Rectangle from "../../model/Rectangle";
 import { ModelContext } from "../../store/ModelContext";
+import { edit } from "../components/urlPath";
 import ActionTag from "./ActionTag";
 import classes from "./RectangleOption.module.css";
 
@@ -15,7 +16,7 @@ const RectOption: React.FC<{
   const navigate = useNavigate();
   const doEdit = () => {
     setEditId(optionID);
-    navigate("/Edit");
+    navigate(edit);
   };
   return (
     <section className={classes.option}>

@@ -4,6 +4,7 @@ import OptionTag from "./OptionTag";
 import classes from "./MenuTag.module.css";
 import { ModelContext } from "../../store/ModelContext";
 import { useNavigate } from "react-router-dom";
+import { edit } from "../components/urlPath";
 
 const MenuTag: React.FC<{ value: Menu }> = ({ value }) => {
   const isTopLevel = !value.parentId;
@@ -11,7 +12,7 @@ const MenuTag: React.FC<{ value: Menu }> = ({ value }) => {
   const navigate = useNavigate();
   const doEdit = () => {
     setEditId(value.id);
-    navigate("/Edit");
+    navigate(edit);
   };
 
   return (
