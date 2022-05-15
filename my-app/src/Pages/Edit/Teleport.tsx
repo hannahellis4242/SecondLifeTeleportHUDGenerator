@@ -1,6 +1,6 @@
-import { FC, FormEvent, useRef } from "react";
+import { FunctionComponent, FormEvent, useRef } from "react";
 
-const Teleport: FC<{
+const Teleport: FunctionComponent<{
   destination: string;
   onSubmit: (newValue: string) => void;
 }> = ({ destination, onSubmit }) => {
