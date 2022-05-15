@@ -4,7 +4,7 @@ import ActionTag from "./ActionTag";
 import classes from "./MenuOption.module.css";
 import RemoveOption from "./RemoveOption";
 
-const MenuOption: FunctionComponent<{
+const MenuOptionEdit: FunctionComponent<{
   optionID: string;
   label: string;
   action: Action;
@@ -19,4 +19,4 @@ const MenuOption: FunctionComponent<{
   </section>
 );
 
-export default MenuOption;
+export default MenuOptionEdit;

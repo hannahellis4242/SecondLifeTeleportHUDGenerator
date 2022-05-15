@@ -17,11 +17,14 @@ const findMenu = (menu: Menu, editId: string | null): Menu | null => {
   return subMenu ? subMenu : null;
 };
 
-const findOption = (menu: Menu, editId: string | null): Option | null => {
+const findOption = (
+  menu: Menu,
+  editId: string | null
+): { parent: Menu; option: Option } | null => {
   if (editId) {
     const child = menu.options.find(({ id }) => id === editId);
     if (child) {
-      return child;
+      return { parent: menu, option: child };
     }
     const subOption = menu.options
       .map(({ action }) => action.menu)
@@ -35,15 +38,18 @@ const findOption = (menu: Menu, editId: string | null): Option | null => {
 const Edit: FunctionComponent = () => {
   const { topMenu, editId } = useContext(ModelContext);
   const menu = findMenu(topMenu, editId);
-  const option = findOption(topMenu, editId);
+  const optionInfo = findOption(topMenu, editId);
   return (
     <section>
       <Navigation active="Edit" />
       <Main>
         {menu ? (
           <EditMenu value={menu} />
-        ) : option ? (
-          <EditOptionTag value={option} fromMenu={false} />
+        ) : optionInfo ? (
+          <EditOptionTag
+            menuId={optionInfo.parent.id}
+            value={optionInfo.option}
+          />
         ) : (
           <section>Nothing to edit</section>
         )}

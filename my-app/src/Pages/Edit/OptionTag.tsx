@@ -9,12 +9,7 @@ const OptionTag: FunctionComponent<{ value: Option; fromMenu: boolean }> = ({
 }) => {
   if (value.rect) {
     return (
-      <RectOption
-        optionID={value.id}
-        rect={value.rect}
-        action={value.action}
-        fromMenu={fromMenu}
-      />
+      <RectOption optionID={value.id} rect={value.rect} action={value.action} />
     );
   } else if (value.label) {
     return (

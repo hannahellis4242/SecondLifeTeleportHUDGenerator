@@ -1,30 +1,22 @@
 import { FunctionComponent } from "react";
 import Option from "../../model/Option";
-import MenuOption from "./MenuOption";
-import RectOption from "./RectOption";
+import MenuOptionEdit from "./MenuOptionEdit";
+import RectOptionEdit from "./RectOptionEdit";
 
 const EditOptionTag: FunctionComponent<{
+  menuId: string;
   value: Option;
-  fromMenu: boolean;
-}> = ({ value, fromMenu }) => {
+}> = ({ menuId, value }) => {
   if (value.rect) {
     return (
-      <RectOption
+      <RectOptionEdit
         optionID={value.id}
         rect={value.rect}
         action={value.action}
-        fromMenu={fromMenu}
       />
     );
   } else if (value.label) {
-    return (
-      <MenuOption
-        optionID={value.id}
-        label={value.label}
-        action={value.action}
-        fromMenu={fromMenu}
-      />
-    );
+    return <MenuOptionEdit menuId={menuId} option={value} />;
   } else {
     return <div>!!!InvalidOption!!!</div>;
   }
