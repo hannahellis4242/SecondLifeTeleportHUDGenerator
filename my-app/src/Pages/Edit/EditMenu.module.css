@@ -19,3 +19,8 @@
 .btn {
   float: right;
 }
+
+.controls {
+  border-bottom: 1px solid black;
+  padding: 5px;
+}

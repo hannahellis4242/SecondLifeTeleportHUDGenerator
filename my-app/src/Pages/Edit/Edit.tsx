@@ -44,7 +44,9 @@ const Edit: React.FC = () => {
           <EditMenu value={menu} />
         ) : option ? (
           <EditOptionTag value={option} fromMenu={false} />
-        ) : null}
+        ) : (
+          <section>Nothing to edit</section>
+        )}
       </Main>
     </section>
   );
