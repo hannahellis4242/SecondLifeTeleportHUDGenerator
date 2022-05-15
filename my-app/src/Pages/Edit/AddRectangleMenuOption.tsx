@@ -1,11 +1,13 @@
-import React, { useContext, useRef } from "react";
+import { FunctionComponent, useContext, useRef } from "react";
 import { ModelContext } from "../../store/ModelContext";
 import RectangleInput from "./RectangleInput";
 import Option from "../../model/Option";
 import { v4 } from "uuid";
 import Menu from "../../model/Menu";
 
-const AddRectangleMenuOption: React.FC<{ menuID: string }> = ({ menuID }) => {
+const AddRectangleMenuOption: FunctionComponent<{ menuID: string }> = ({
+  menuID,
+}) => {
   const modelContext = useContext(ModelContext);
   const rectangleRef = useRef<RectangleInput>(null);
   const messageRef = useRef<HTMLInputElement>(null);

@@ -1,12 +1,12 @@
-import React from "react";
+import { FunctionComponent } from "react";
 import Option from "../../model/Option";
 import MenuOption from "./MenuOption";
 import RectOption from "./RectOption";
 
-const EditOptionTag: React.FC<{ value: Option; fromMenu: boolean }> = ({
-  value,
-  fromMenu,
-}) => {
+const EditOptionTag: FunctionComponent<{
+  value: Option;
+  fromMenu: boolean;
+}> = ({ value, fromMenu }) => {
   if (value.rect) {
     return (
       <RectOption

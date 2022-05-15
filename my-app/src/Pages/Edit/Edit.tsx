@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { FunctionComponent, useContext } from "react";
 import { ModelContext } from "../../store/ModelContext";
 import Main from "../components/Main";
 import Navigation from "../components/Navigation";
@@ -32,7 +32,7 @@ const findOption = (menu: Menu, editId: string | null): Option | null => {
   return null;
 };
 
-const Edit: React.FC = () => {
+const Edit: FunctionComponent = () => {
   const { topMenu, editId } = useContext(ModelContext);
   const menu = findMenu(topMenu, editId);
   const option = findOption(topMenu, editId);

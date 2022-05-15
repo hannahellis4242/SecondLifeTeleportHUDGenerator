@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import { createContext, FunctionComponent, useState } from "react";
 import Menu from "../model/Menu";
 import Option from "../model/Option";
 import { v4 } from "uuid";
@@ -45,7 +45,7 @@ export const ModelContext = createContext<IModelContext>({
   updateOption(menuId: string, optionId: string, option: Option) {},
 });
 
-const ModelContextProvider: React.FC<{ children: React.ReactNode }> = (
+const ModelContextProvider: FunctionComponent<{ children: React.ReactNode }> = (
   props
 ) => {
   const [menuState, setMenuState] = useState<Menu>(new Menu(topLevelID, []));

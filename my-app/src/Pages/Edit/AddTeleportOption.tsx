@@ -1,11 +1,11 @@
-import React from "react";
+import { FunctionComponent } from "react";
 import AddMenuTeleportOption from "./AddMenuTeleportOption";
 import AddRectangleTeleportOption from "./AddRectangleTeleportOption";
 
-const AddTeleportOption: React.FC<{ menuID: string; top: boolean }> = ({
-  menuID,
-  top,
-}) => {
+const AddTeleportOption: FunctionComponent<{
+  menuID: string;
+  top: boolean;
+}> = ({ menuID, top }) => {
   return (
     <section>
       <header>Add Teleport Option</header>

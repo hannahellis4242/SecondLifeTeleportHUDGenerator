@@ -1,9 +1,9 @@
-import React from "react";
+import { FunctionComponent } from "react";
 import Option from "../../model/Option";
 import MenuOption from "./MenuOption";
 import RectOption from "./RectOption";
 
-const OptionTag: React.FC<{ value: Option; fromMenu: boolean }> = ({
+const OptionTag: FunctionComponent<{ value: Option; fromMenu: boolean }> = ({
   value,
   fromMenu,
 }) => {

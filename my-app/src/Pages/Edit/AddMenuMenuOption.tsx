@@ -1,10 +1,12 @@
-import React, { useContext, useRef } from "react";
+import { FunctionComponent, useContext, useRef } from "react";
 import { v4 } from "uuid";
 import { ModelContext } from "../../store/ModelContext";
 import Option from "../../model/Option";
 import Menu from "../../model/Menu";
 
-const AddMenuMenuOption: React.FC<{ menuID: string }> = ({ menuID }) => {
+const AddMenuMenuOption: FunctionComponent<{ menuID: string }> = ({
+  menuID,
+}) => {
   const modelContext = useContext(ModelContext);
   const labelRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLInputElement>(null);

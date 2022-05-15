@@ -1,10 +1,10 @@
-import React, { useContext, useRef } from "react";
+import { FunctionComponent, useContext, useRef } from "react";
 import { ModelContext } from "../../store/ModelContext";
 import RectangleInput from "./RectangleInput";
 import Option from "../../model/Option";
 import { v4 } from "uuid";
 
-const AddRectangleTeleportOption: React.FC<{ menuID: string }> = ({
+const AddRectangleTeleportOption: FunctionComponent<{ menuID: string }> = ({
   menuID,
 }) => {
   const modelContext = useContext(ModelContext);

@@ -1,7 +1,9 @@
-import React from "react";
+import { FunctionComponent } from "react";
 import classes from "./Main.module.css";
 
-const Main: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const Main: FunctionComponent<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   return <main className={classes.main}> {children} </main>;
 };
 

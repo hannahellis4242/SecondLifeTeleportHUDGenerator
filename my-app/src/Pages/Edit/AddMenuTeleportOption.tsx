@@ -1,9 +1,11 @@
-import React, { useContext, useRef } from "react";
+import { FunctionComponent, useContext, useRef } from "react";
 import { v4 } from "uuid";
 import { ModelContext } from "../../store/ModelContext";
 import Option from "../../model/Option";
 
-const AddMenuTeleportOption: React.FC<{ menuID: string }> = ({ menuID }) => {
+const AddMenuTeleportOption: FunctionComponent<{ menuID: string }> = ({
+  menuID,
+}) => {
   const modelContext = useContext(ModelContext);
   const labelRef = useRef<HTMLInputElement>(null);
   const teleportRef = useRef<HTMLInputElement>(null);

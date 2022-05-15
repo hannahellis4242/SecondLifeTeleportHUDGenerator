@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import { ChangeEvent, FunctionComponent, useState } from "react";
 import Menu from "../../model/Menu";
 import OptionTag from "./OptionTag";
 import classes from "./EditMenu.module.css";
@@ -18,7 +18,7 @@ const toAddType = (s: string): AddType | null => {
   }
 };
 
-const EditMenu: React.FC<{ value: Menu }> = ({ value }) => {
+const EditMenu: FunctionComponent<{ value: Menu }> = ({ value }) => {
   const isTopLevel = !value.parentId;
   const [addType, changeAddType] = useState<AddType>("Teleport");
   const handleTypeChange = ({ target }: ChangeEvent) => {

@@ -1,9 +1,9 @@
-import React from "react";
+import { FunctionComponent } from "react";
 import Action from "../../model/Action";
 import MenuTag from "./MenuTag";
 import Teleport from "./Teleport";
 
-const ActionEdit: React.FC<{ value: Action }> = ({ value }) => {
+const ActionEdit: FunctionComponent<{ value: Action }> = ({ value }) => {
   if (value.destination) {
     return (
       <Teleport

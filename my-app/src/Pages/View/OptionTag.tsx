@@ -1,9 +1,9 @@
-import React from "react";
+import { FunctionComponent } from "react";
 import Option from "../../model/Option";
 import MenuOption from "./MenuOption";
 import RectOption from "./RectOption";
 
-const OptionTag: React.FC<{ value: Option }> = ({ value }) => {
+const OptionTag: FunctionComponent<{ value: Option }> = ({ value }) => {
   if (value.rect) {
     return (
       <RectOption optionID={value.id} rect={value.rect} action={value.action} />

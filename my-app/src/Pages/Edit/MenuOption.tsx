@@ -1,10 +1,10 @@
-import React from "react";
+import { FunctionComponent } from "react";
 import Action from "../../model/Action";
 import ActionEdit from "./ActionEdit";
 import classes from "./MenuOption.module.css";
 import RemoveOption from "./RemoveOption";
 
-const MenuOption: React.FC<{
+const MenuOption: FunctionComponent<{
   optionID: string;
   label: string;
   action: Action;

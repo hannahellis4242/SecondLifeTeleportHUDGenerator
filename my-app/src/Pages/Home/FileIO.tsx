@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import { FunctionComponent, useContext, useRef } from "react";
 import { ModelContext } from "../../store/ModelContext";
 import { saveAs } from "file-saver";
 import { v4 } from "uuid";
@@ -46,7 +46,7 @@ const collapseAll = (menu: Menu) => {
   return menu;
 };
 
-const FileIO: React.FC = () => {
+const FileIO: FunctionComponent = () => {
   const modelContext = useContext(ModelContext);
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();

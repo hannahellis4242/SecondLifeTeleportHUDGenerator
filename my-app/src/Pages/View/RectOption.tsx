@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { FunctionComponent, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Action from "../../model/Action";
 import Rectangle from "../../model/Rectangle";
@@ -7,7 +7,7 @@ import { edit } from "../components/urlPath";
 import ActionTag from "./ActionTag";
 import classes from "./RectangleOption.module.css";
 
-const RectOption: React.FC<{
+const RectOption: FunctionComponent<{
   optionID: string;
   rect: Rectangle;
   action: Action;

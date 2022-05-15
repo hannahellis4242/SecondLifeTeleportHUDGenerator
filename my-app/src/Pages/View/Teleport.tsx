@@ -1,6 +1,8 @@
-import React from "react";
+import { FunctionComponent } from "react";
 
-const Teleport: React.FC<{ destination: String }> = ({ destination }) => {
+const Teleport: FunctionComponent<{ destination: String }> = ({
+  destination,
+}) => {
   return <p>Teleport to {destination}</p>;
 };
 

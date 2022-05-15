@@ -1,4 +1,4 @@
-import React from "react";
+import { FunctionComponent } from "react";
 import Action from "../../model/Action";
 import Rectangle from "../../model/Rectangle";
 import ActionEdit from "./ActionEdit";
@@ -6,7 +6,7 @@ import RectangleInput from "./RectangleInput";
 import classes from "./RectangleOption.module.css";
 import RemoveOption from "./RemoveOption";
 
-const RectOption: React.FC<{
+const RectOption: FunctionComponent<{
   optionID: string;
   rect: Rectangle;
   action: Action;

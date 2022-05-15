@@ -1,12 +1,12 @@
 import saveAs from "file-saver";
-import React, { useContext, useEffect, useRef } from "react";
+import { FunctionComponent, useContext, useEffect, useRef } from "react";
 import createScript from "../../script/createScript";
 import { ModelContext } from "../../store/ModelContext";
 import classes from "./Generate.module.css";
 import Main from "../components/Main";
 import Navigation from "../components/Navigation";
 
-const Generate: React.FC = () => {
+const Generate: FunctionComponent = () => {
   const modelContext = useContext(ModelContext);
   const output = useRef<HTMLParagraphElement>(null);
 

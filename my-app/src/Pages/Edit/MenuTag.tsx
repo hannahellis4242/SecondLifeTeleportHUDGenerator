@@ -1,9 +1,9 @@
-import React from "react";
+import { FunctionComponent } from "react";
 import Menu from "../../model/Menu";
 import OptionTag from "./OptionTag";
 import classes from "./MenuTag.module.css";
 
-const MenuTag: React.FC<{ value: Menu }> = ({ value }) => {
+const MenuTag: FunctionComponent<{ value: Menu }> = ({ value }) => {
   const isTopLevel = !value.parentId;
   return (
     <section className={classes.menu}>

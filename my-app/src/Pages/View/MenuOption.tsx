@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { FunctionComponent, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Action from "../../model/Action";
 import { ModelContext } from "../../store/ModelContext";
@@ -6,7 +6,7 @@ import { edit } from "../components/urlPath";
 import ActionTag from "./ActionTag";
 import classes from "./MenuOption.module.css";
 
-const MenuOption: React.FC<{
+const MenuOption: FunctionComponent<{
   optionID: string;
   label: string;
   action: Action;

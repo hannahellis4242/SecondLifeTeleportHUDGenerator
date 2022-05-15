@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { FunctionComponent, useContext, useState } from "react";
 import Menu from "../../model/Menu";
 import OptionTag from "./OptionTag";
 import classes from "./MenuTag.module.css";
@@ -6,7 +6,7 @@ import { ModelContext } from "../../store/ModelContext";
 import { useNavigate } from "react-router-dom";
 import { edit } from "../components/urlPath";
 
-const MenuTag: React.FC<{ value: Menu }> = ({ value }) => {
+const MenuTag: FunctionComponent<{ value: Menu }> = ({ value }) => {
   const isTopLevel = !value.parentId;
   const [collapsed, setCollased] = useState<boolean>(value.collapsed);
   const { setEditId, toggleCollapse } = useContext(ModelContext);

@@ -1,8 +1,8 @@
-import React from "react";
+import { FunctionComponent } from "react";
 import AddMenuMenuOption from "./AddMenuMenuOption";
 import AddRectangleMenuOption from "./AddRectangleMenuOption";
 
-const AddMenuOption: React.FC<{ menuID: string; top: boolean }> = ({
+const AddMenuOption: FunctionComponent<{ menuID: string; top: boolean }> = ({
   menuID,
   top,
 }) => {
