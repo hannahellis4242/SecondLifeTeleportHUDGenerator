@@ -23,21 +23,29 @@ const MenuOptionEdit: FunctionComponent<{ menuId: string; option: Option }> = ({
       if (option.action.destination) {
         //need to check for destination change too
         const teleport = teleportRef.current;
-        console.log(teleport);
+        if (teleport) {
+          button.disabled = !(
+            labelChanged || teleport.value !== option.action.destination
+          );
+        }
+      } else {
+        button.disabled = !labelChanged;
       }
-      button.disabled = !labelChanged;
     }
   };
   const submit = (event: FormEvent) => {
     event.preventDefault();
     const labelInput = labelInputRef.current;
     if (labelInput) {
-      modelContext.updateOption(menuId, option.id, {
-        id: option.id,
-        label: labelInput.value,
-        action: option.action,
-      });
-      navigate(view);
+      const teleport = teleportRef.current;
+      if (teleport) {
+        modelContext.updateOption(menuId, option.id, {
+          id: option.id,
+          label: labelInput.value,
+          action: { destination: teleport.value },
+        });
+        navigate(view);
+      }
     }
   };
 
