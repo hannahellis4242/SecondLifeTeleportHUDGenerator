@@ -5,6 +5,7 @@ import Option from "../../model/Option";
 import { v4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import { view } from "../components/urlPath";
+import { valid } from "../../model/Rectangle";
 
 const AddRectangleTeleportOption: FunctionComponent<{ menuID: string }> = ({
   menuID,
@@ -33,7 +34,7 @@ const AddRectangleTeleportOption: FunctionComponent<{ menuID: string }> = ({
     const rectInput = rectangleRef.current;
     const teleportInput = teleportRef.current;
     return rectInput && teleportInput
-      ? rectInput.rectangle.isValid() && teleportInput.value !== ""
+      ? valid(rectInput.rectangle) && teleportInput.value !== ""
       : false;
   };
 

@@ -6,6 +6,7 @@ import { v4 } from "uuid";
 import Menu from "../../model/Menu";
 import { useNavigate } from "react-router-dom";
 import { view } from "../components/urlPath";
+import { valid } from "../../model/Rectangle";
 
 const AddRectangleMenuOption: FunctionComponent<{ menuID: string }> = ({
   menuID,
@@ -36,7 +37,7 @@ const AddRectangleMenuOption: FunctionComponent<{ menuID: string }> = ({
     const rectInput = rectangleRef.current;
     const messageInput = messageRef.current;
     return rectInput && messageInput
-      ? rectInput.rectangle.isValid() && messageInput.value !== ""
+      ? valid(rectInput.rectangle) && messageInput.value !== ""
       : false;
   };
 

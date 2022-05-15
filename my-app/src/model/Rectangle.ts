@@ -5,10 +5,6 @@ export default class Rectangle {
     public right: number,
     public top: number
   ) {}
-
-  isValid(): boolean {
-    return this.left < this.right && this.bottom < this.top;
-  }
 }
 
 export const different = (a: Rectangle, b: Rectangle): boolean => {
@@ -18,4 +14,8 @@ export const different = (a: Rectangle, b: Rectangle): boolean => {
     a.right !== b.right ||
     a.top !== b.top
   );
+};
+
+export const valid = (a: Rectangle): boolean => {
+  return a.left < a.right && a.bottom < a.top;
 };
