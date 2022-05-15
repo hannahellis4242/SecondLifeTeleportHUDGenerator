@@ -10,19 +10,35 @@ interface IModelContext {
   topMenu: Menu;
   editId: string | null;
   setTopMenu(menu: Menu): void;
+  toggleCollapse(id: string): void;
   setEditId(id?: string): void;
   addOption(id: string, option: Option): void;
   removeOption(id: string): void;
   updateOption(menuId: string, optionId: string, option: Option): void;
 }
 
+//TODO move this vvvv
+const toggleCollapseRecursive = (id: string, menu: Menu) => {
+  if (menu.id === id) {
+    menu.collapsed = !menu.collapsed;
+  } else {
+    menu.options.forEach(({ action }) => {
+      if (action.menu) {
+        toggleCollapseRecursive(id, action.menu);
+      }
+    });
+  }
+  return menu;
+};
+
 //TODO remove this vvvv
 const topLevelID = v4();
 
 export const ModelContext = createContext<IModelContext>({
-  topMenu: { id: topLevelID, options: [] },
+  topMenu: new Menu(topLevelID, []),
   editId: topLevelID,
   setTopMenu(menu: Menu): void {},
+  toggleCollapse(id: string): void {},
   setEditId(id?: string): void {},
   addOption(id: string, option: Option) {},
   removeOption(id: string) {},
@@ -32,11 +48,7 @@ export const ModelContext = createContext<IModelContext>({
 const ModelContextProvider: React.FC<{ children: React.ReactNode }> = (
   props
 ) => {
-  const [menuState, setMenuState] = useState<Menu>({
-    id: v4(),
-    options: [],
-  });
-
+  const [menuState, setMenuState] = useState<Menu>(new Menu(topLevelID, []));
   const [editState, setEditState] = useState<string | null>(null);
 
   const setMenuHandler = (menu: Menu) => {
@@ -79,10 +91,15 @@ const ModelContextProvider: React.FC<{ children: React.ReactNode }> = (
     });
   };
 
+  const toggleCollapseHandler = (id: string) => {
+    setMenuState((current) => toggleCollapseRecursive(id, current));
+  };
+
   const context = {
     topMenu: menuState,
     editId: editState,
     setTopMenu: setMenuHandler,
+    toggleCollapse: toggleCollapseHandler,
     setEditId: setEditIDHandler,
     addOption: addOptionHandler,
     removeOption: removeOptionHandler,

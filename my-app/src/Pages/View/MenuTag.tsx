@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Menu from "../../model/Menu";
 import OptionTag from "./OptionTag";
 import classes from "./MenuTag.module.css";
@@ -8,8 +8,13 @@ import { edit } from "../components/urlPath";
 
 const MenuTag: React.FC<{ value: Menu }> = ({ value }) => {
   const isTopLevel = !value.parentId;
-  const { setEditId } = useContext(ModelContext);
+  const [collapsed, setCollased] = useState<boolean>(value.collapsed);
+  const { setEditId, toggleCollapse } = useContext(ModelContext);
   const navigate = useNavigate();
+  const changeCollapse = () => {
+    setCollased((current) => !current);
+    toggleCollapse(value.id);
+  };
   const doEdit = () => {
     setEditId(value.id);
     navigate(edit);
@@ -23,13 +28,22 @@ const MenuTag: React.FC<{ value: Menu }> = ({ value }) => {
           Menu ID : {value.id}
           <button className={classes.btn} onClick={doEdit}>
             Edit
-          </button>
+          </button>{" "}
+          {value.options.length !== 0 ? (
+            <button className={classes.btn} onClick={changeCollapse}>
+              {collapsed ? "Show" : "Hide"}
+            </button>
+          ) : null}
         </div>
       </header>
-      {value.message ? <p>Message : {value.message} </p> : null}
-      {value.options.map((option, index) => (
-        <OptionTag key={index} value={option} />
-      ))}
+      {!value.collapsed ? (
+        <section>
+          {value.message ? <p>Message : {value.message} </p> : null}
+          {value.options.map((option, index) => (
+            <OptionTag key={index} value={option} />
+          ))}
+        </section>
+      ) : null}
     </section>
   );
 };

@@ -36,6 +36,16 @@ const parentifyMenu = (menu: Menu, parent?: Menu) => {
   return menu;
 };
 
+const collapseAll = (menu: Menu) => {
+  menu.collapsed = true;
+  menu.options.forEach(({ action }) => {
+    if (action.menu) {
+      collapseAll(action.menu);
+    }
+  });
+  return menu;
+};
+
 const FileIO: React.FC = () => {
   const modelContext = useContext(ModelContext);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -50,6 +60,7 @@ const FileIO: React.FC = () => {
           .then((data) => JSON.parse(data))
           .then(identifyMenu)
           .then(parentifyMenu)
+          .then(collapseAll)
           .then((data) => modelContext.setTopMenu(data))
           .then(() => navigate(view));
       }

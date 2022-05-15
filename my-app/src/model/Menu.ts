@@ -5,6 +5,7 @@ export default class Menu {
     public id: string,
     public options: Option[],
     public parentId?: string,
-    public message?: string
+    public message?: string,
+    public collapsed: boolean = true
   ) {}
 }
