@@ -3,7 +3,7 @@ import Action from "../../model/Action";
 import MenuTag from "./MenuTag";
 import Teleport from "./Teleport";
 
-const ActionTag: React.FC<{ value: Action }> = ({ value }) => {
+const ActionEdit: React.FC<{ value: Action }> = ({ value }) => {
   if (value.destination) {
     return <Teleport destination={value.destination} />;
   } else if (value.menu) {
@@ -13,4 +13,4 @@ const ActionTag: React.FC<{ value: Action }> = ({ value }) => {
   }
 };
 
-export default ActionTag;
+export default ActionEdit;

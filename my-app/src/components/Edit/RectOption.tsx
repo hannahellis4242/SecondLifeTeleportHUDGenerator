@@ -1,7 +1,7 @@
 import React from "react";
 import Action from "../../model/Action";
 import Rectangle from "../../model/Rectangle";
-import ActionTag from "./ActionTag";
+import ActionEdit from "./ActionEdit";
 import RectangleInput from "./RectangleInput";
 import classes from "./RectangleOption.module.css";
 import RemoveOption from "./RemoveOption";
@@ -19,7 +19,7 @@ const RectOption: React.FC<{
         {fromMenu ? <RemoveOption optionId={optionID} /> : null}
       </header>
       <RectangleInput rect={rect} />
-      <ActionTag value={action} />
+      <ActionEdit value={action} />
     </section>
   );
 };
