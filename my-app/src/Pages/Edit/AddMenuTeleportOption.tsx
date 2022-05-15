@@ -2,6 +2,8 @@ import { FunctionComponent, useContext, useRef } from "react";
 import { v4 } from "uuid";
 import { ModelContext } from "../../store/ModelContext";
 import Option from "../../model/Option";
+import { useNavigate } from "react-router-dom";
+import { view } from "../components/urlPath";
 
 const AddMenuTeleportOption: FunctionComponent<{ menuID: string }> = ({
   menuID,
@@ -10,6 +12,7 @@ const AddMenuTeleportOption: FunctionComponent<{ menuID: string }> = ({
   const labelRef = useRef<HTMLInputElement>(null);
   const teleportRef = useRef<HTMLInputElement>(null);
   const submitRef = useRef<HTMLButtonElement>(null);
+  const navigate = useNavigate();
 
   const onSubmitHandler = (event: React.FormEvent) => {
     event.preventDefault();
@@ -22,6 +25,7 @@ const AddMenuTeleportOption: FunctionComponent<{ menuID: string }> = ({
         action: { destination: teleportInput.value },
       };
       modelContext.addOption(menuID, option);
+      navigate(view);
     }
   };
   const canSubmit = (): boolean => {

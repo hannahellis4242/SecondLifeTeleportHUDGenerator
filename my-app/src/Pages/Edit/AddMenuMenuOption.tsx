@@ -3,6 +3,8 @@ import { v4 } from "uuid";
 import { ModelContext } from "../../store/ModelContext";
 import Option from "../../model/Option";
 import Menu from "../../model/Menu";
+import { useNavigate } from "react-router-dom";
+import { view } from "../components/urlPath";
 
 const AddMenuMenuOption: FunctionComponent<{ menuID: string }> = ({
   menuID,
@@ -11,6 +13,7 @@ const AddMenuMenuOption: FunctionComponent<{ menuID: string }> = ({
   const labelRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLInputElement>(null);
   const submitRef = useRef<HTMLButtonElement>(null);
+  const navigate = useNavigate();
 
   const onSubmitHandler = (event: React.FormEvent) => {
     event.preventDefault();
@@ -25,6 +28,7 @@ const AddMenuMenuOption: FunctionComponent<{ menuID: string }> = ({
         },
       };
       modelContext.addOption(menuID, option);
+      navigate(view);
     }
   };
   const canSubmit = (): boolean => {

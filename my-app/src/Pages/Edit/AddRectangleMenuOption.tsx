@@ -4,6 +4,8 @@ import RectangleInput from "./RectangleInput";
 import Option from "../../model/Option";
 import { v4 } from "uuid";
 import Menu from "../../model/Menu";
+import { useNavigate } from "react-router-dom";
+import { view } from "../components/urlPath";
 
 const AddRectangleMenuOption: FunctionComponent<{ menuID: string }> = ({
   menuID,
@@ -12,6 +14,7 @@ const AddRectangleMenuOption: FunctionComponent<{ menuID: string }> = ({
   const rectangleRef = useRef<RectangleInput>(null);
   const messageRef = useRef<HTMLInputElement>(null);
   const submitRef = useRef<HTMLButtonElement>(null);
+  const navigate = useNavigate();
 
   const onSubmitHandler = (event: React.FormEvent) => {
     event.preventDefault();
@@ -26,6 +29,7 @@ const AddRectangleMenuOption: FunctionComponent<{ menuID: string }> = ({
         rect: rectInput.rectangle,
       };
       modelContext.addOption(menuID, option);
+      navigate(view);
     }
   };
   const canSubmit = (): boolean => {

@@ -3,6 +3,8 @@ import { ModelContext } from "../../store/ModelContext";
 import RectangleInput from "./RectangleInput";
 import Option from "../../model/Option";
 import { v4 } from "uuid";
+import { useNavigate } from "react-router-dom";
+import { view } from "../components/urlPath";
 
 const AddRectangleTeleportOption: FunctionComponent<{ menuID: string }> = ({
   menuID,
@@ -11,6 +13,7 @@ const AddRectangleTeleportOption: FunctionComponent<{ menuID: string }> = ({
   const rectangleRef = useRef<RectangleInput>(null);
   const teleportRef = useRef<HTMLInputElement>(null);
   const submitRef = useRef<HTMLButtonElement>(null);
+  const navigate = useNavigate();
 
   const onSubmitHandler = (event: React.FormEvent) => {
     event.preventDefault();
@@ -23,6 +26,7 @@ const AddRectangleTeleportOption: FunctionComponent<{ menuID: string }> = ({
         rect: rectInput.rectangle,
       };
       modelContext.addOption(menuID, option);
+      navigate(view);
     }
   };
   const canSubmit = (): boolean => {
