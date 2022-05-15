@@ -12,13 +12,20 @@ const MenuOptionEdit: FunctionComponent<{ menuId: string; option: Option }> = ({
 }) => {
   const modelContext = useContext(ModelContext);
   const labelInputRef = useRef<HTMLInputElement>(null);
+  const teleportRef = useRef<HTMLInputElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const navigate = useNavigate();
   const canSubmit = () => {
     const labelInput = labelInputRef.current;
     const button = buttonRef.current;
     if (labelInput && button) {
-      button.disabled = labelInput.value === option.label;
+      const labelChanged = labelInput.value !== option.label;
+      if (option.action.destination) {
+        //need to check for destination change too
+        const teleport = teleportRef.current;
+        console.log(teleport);
+      }
+      button.disabled = !labelChanged;
     }
   };
   const submit = (event: FormEvent) => {
@@ -53,7 +60,11 @@ const MenuOptionEdit: FunctionComponent<{ menuId: string; option: Option }> = ({
           update
         </button>
       </header>
-      <ActionEdit value={option.action} />
+      <ActionEdit
+        ref={teleportRef}
+        value={option.action}
+        onChange={canSubmit}
+      />
     </form>
   );
 };

@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useRef } from "react";
 import Action from "../../model/Action";
 import Rectangle from "../../model/Rectangle";
 import ActionEdit from "./ActionEdit";
@@ -10,11 +10,13 @@ const RectOptionEdit: FunctionComponent<{
   rect: Rectangle;
   action: Action;
 }> = ({ optionID, rect, action }) => {
+  const teleportRef = useRef<HTMLInputElement>(null);
+  const onChange = () => {};
   return (
     <section className={classes.option}>
       <header className={classes.head}>Rectangle</header>
       <RectangleInput rect={rect} />
-      <ActionEdit value={action} />
+      <ActionEdit ref={teleportRef} value={action} onChange={onChange} />
     </section>
   );
 };

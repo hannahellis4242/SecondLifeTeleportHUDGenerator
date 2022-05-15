@@ -1,16 +1,28 @@
-import { FunctionComponent } from "react";
+import React, { forwardRef } from "react";
 import Action from "../../model/Action";
 import MenuTag from "./MenuTag";
-import Teleport from "./Teleport";
+import TeleportEdit from "./TeleportEdit";
 
-const ActionEdit: FunctionComponent<{ value: Action }> = ({ value }) => {
+const ActionEdit = forwardRef<
+  HTMLInputElement,
+  {
+    value: Action;
+    onChange: () => void;
+  }
+>(({ value, onChange }, ref) => {
   if (value.destination) {
-    return <Teleport destination={value.destination} />;
+    return (
+      <TeleportEdit
+        ref={ref}
+        destination={value.destination}
+        onChange={onChange}
+      />
+    );
   } else if (value.menu) {
     return <MenuTag value={value.menu} />;
   } else {
     return <div>!!!Invalid Action!!!</div>;
   }
-};
+});
 
 export default ActionEdit;
