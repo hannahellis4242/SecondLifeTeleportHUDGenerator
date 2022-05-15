@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { ModelContext } from "../../store/ModelContext";
-import Main from "../Main";
-import Navigation from "../Navigation";
+import Main from "../components/Main";
+import Navigation from "../components/Navigation";
 import EditMenu from "./EditMenu";
 import Menu from "../../model/Menu";
 import Option from "../../model/Option";

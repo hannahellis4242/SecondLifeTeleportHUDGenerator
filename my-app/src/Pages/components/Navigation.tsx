@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Page from "../model/Page";
+import Page from "../../model/Page";
 import classes from "./Navigation.module.css";
 
 const Navigation: React.FC<{ active: Page }> = ({ active }) => {

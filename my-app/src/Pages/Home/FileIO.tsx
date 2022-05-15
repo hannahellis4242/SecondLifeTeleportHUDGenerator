@@ -1,11 +1,11 @@
 import React, { useContext, useRef } from "react";
-import { ModelContext } from "../store/ModelContext";
+import { ModelContext } from "../../store/ModelContext";
 import { saveAs } from "file-saver";
 import { v4 } from "uuid";
-import Menu from "../model/Menu";
+import Menu from "../../model/Menu";
 import { useNavigate } from "react-router-dom";
-import Navigation from "./Navigation";
-import Main from "./Main";
+import Navigation from "../components/Navigation";
+import Main from "../components/Main";
 import classes from "./FileIO.module.css";
 
 const identifyMenu = (menu: Menu) => {
