@@ -11,12 +11,10 @@ You will need node.js installed on your system
 Open a command propmt and navigate to where you pulled down this repo (or simply open the command prompt from the file explorer)
 Then type the following into the prompt (waiting for each line to finish before entering the next of course)
 
-1. `npm i`
-2. `npm run build`
+1. `cd my-app`
+2. `npm i`
 
 ## How to use
-
-1. Edit the supplied script.json to match the needs of your hud
-2. Type the following into the command prompt `node dist/main.js` or `npm start` then press enter
-3. Wait for a file called `script.lsl` to be generated
-4. Import the script into second life and use it for your HUD
+1. `cd my-app`
+2. `npm start`
+3. A web browser should pop up ready for you to use.
