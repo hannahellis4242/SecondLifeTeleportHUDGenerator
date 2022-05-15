@@ -12,7 +12,7 @@ class RectangleInput extends React.Component<{
   constructor(props: { onChange?: () => void; rect?: Rectangle }) {
     super(props);
     this.ref = React.createRef();
-    this.rectangle = props.rect ? props.rect : new Rectangle(0, 0, 1, 1);
+    this.rectangle = props.rect ? { ...props.rect } : new Rectangle(0, 0, 1, 1);
     this.onChange = props.onChange;
   }
   render() {

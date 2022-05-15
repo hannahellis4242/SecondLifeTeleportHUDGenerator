@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { FormEvent, FunctionComponent, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Action from "../../model/Action";
-import Rectangle, { different } from "../../model/Rectangle";
+import Rectangle, { different, valid } from "../../model/Rectangle";
 import { ModelContext } from "../../store/ModelContext";
 import { view } from "../components/urlPath";
 import ActionEdit from "./ActionEdit";
@@ -24,15 +24,19 @@ const RectOptionEdit: FunctionComponent<{
     const rectInput = rectRef.current;
     const button = buttonRef.current;
     if (rectInput && button) {
-      const rectChanged = different(rect, rectInput.rectangle);
-      if (action.destination) {
-        const teleport = teleportRef.current;
-        if (teleport) {
-          const teleportChanged = teleport.value !== action.destination;
-          button.disabled = !(rectChanged || teleportChanged);
-        }
+      if (!valid(rectInput.rectangle)) {
+        button.disabled = true;
       } else {
-        button.disabled = !rectChanged;
+        const rectChanged = different(rect, rectInput.rectangle);
+        if (action.destination) {
+          const teleport = teleportRef.current;
+          if (teleport) {
+            const teleportChanged = teleport.value !== action.destination;
+            button.disabled = !(rectChanged || teleportChanged);
+          }
+        } else {
+          button.disabled = !rectChanged;
+        }
       }
     }
   };
@@ -46,6 +50,12 @@ const RectOptionEdit: FunctionComponent<{
           id: optionID,
           rect: rectInput.rectangle,
           action: { destination: teleport.value },
+        });
+      } else {
+        updateOption(parent, optionID, {
+          id: optionID,
+          rect: rectInput.rectangle,
+          action,
         });
       }
     }
