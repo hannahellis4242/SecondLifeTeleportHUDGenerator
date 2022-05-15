@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import Action from "../../model/Action";
-import ActionEdit from "./ActionEdit";
+import ActionTag from "./ActionTag";
 import classes from "./MenuOption.module.css";
 import RemoveOption from "./RemoveOption";
 
@@ -10,13 +10,13 @@ const MenuOption: FunctionComponent<{
   action: Action;
   fromMenu: boolean;
 }> = ({ optionID, label, action, fromMenu }) => (
-  <form className={classes.option}>
+  <section className={classes.option}>
     <header className={classes.head}>
       Menu Option Label : {label}
       {fromMenu ? <RemoveOption optionId={optionID} /> : null}
     </header>
-    <ActionEdit value={action} />
-  </form>
+    <ActionTag value={action} />
+  </section>
 );
 
 export default MenuOption;
