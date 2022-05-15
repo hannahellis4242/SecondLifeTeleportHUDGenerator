@@ -7,38 +7,44 @@ import Menu from "../../model/Menu";
 import Option from "../../model/Option";
 import EditOptionTag from "./EditOptionTag";
 
-const findMenu = (menu: Menu, editId: string | null): Menu | null => {
-  if (editId && menu.id === editId) {
-    return menu;
+const isMenu = (item: Menu | undefined): item is Menu => {
+  return !!item;
+};
+
+const findMenu = ([head, ...tail]: Menu[], editId: string): Menu | null => {
+  if (head) {
+    if (head.id === editId) {
+      return head;
+    }
+    return findMenu(
+      tail.concat(head.options.map(({ action }) => action.menu).filter(isMenu)),
+      editId
+    );
   }
-  const subMenu = menu.options
-    .map(({ action }) => action.menu)
-    .find((menu) => (menu ? findMenu(menu, editId) : false));
-  return subMenu ? subMenu : null;
+  return null;
 };
 
 const findOption = (
-  menu: Menu,
-  editId: string | null
+  [head, ...tail]: Menu[],
+  editId: string
 ): { parent: Menu; option: Option } | null => {
-  if (editId) {
-    const child = menu.options.find(({ id }) => id === editId);
-    if (child) {
-      return { parent: menu, option: child };
+  if (head) {
+    const result = head.options.find(({ id }) => id === editId);
+    if (result) {
+      return { parent: head, option: result };
     }
-    const subOption = menu.options
-      .map(({ action }) => action.menu)
-      .map((menu) => (menu ? findOption(menu, editId) : null))
-      .find((x) => x !== null);
-    return subOption ? subOption : null;
+    return findOption(
+      tail.concat(head.options.map(({ action }) => action.menu).filter(isMenu)),
+      editId
+    );
   }
   return null;
 };
 
 const Edit: FunctionComponent = () => {
   const { topMenu, editId } = useContext(ModelContext);
-  const menu = findMenu(topMenu, editId);
-  const optionInfo = findOption(topMenu, editId);
+  const menu = editId ? findMenu([topMenu], editId) : null;
+  const optionInfo = editId ? findOption([topMenu], editId) : null;
   return (
     <section>
       <Navigation active="Edit" />
