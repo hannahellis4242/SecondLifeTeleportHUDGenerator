@@ -1,6 +1,5 @@
 import { FunctionComponent } from "react";
 import Menu from "../../model/Menu";
-import OptionTag from "./OptionTag";
 import classes from "./MenuTag.module.css";
 
 const MenuTag: FunctionComponent<{ value: Menu }> = ({ value }) => {
@@ -11,10 +10,6 @@ const MenuTag: FunctionComponent<{ value: Menu }> = ({ value }) => {
         {isTopLevel ? <div>Top</div> : null}
         <div>Menu ID : {value.id}</div>
       </header>
-      {value.message ? <p>Message : {value.message} </p> : null}
-      {value.options.map((option, index) => (
-        <OptionTag key={index} value={option} fromMenu={true} />
-      ))}
     </section>
   );
 };
