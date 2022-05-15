@@ -57,9 +57,8 @@ const RectOptionEdit: FunctionComponent<{
           action,
         });
       }
+      navigate(view);
     }
-
-    navigate(view);
   };
   return (
     <form className={classes.option} onSubmit={submit}>
