@@ -4,20 +4,18 @@ import MenuOptionEdit from "./MenuOptionEdit";
 import RectOptionEdit from "./RectOptionEdit";
 
 const EditOptionTag: FunctionComponent<{
-  menuId: string;
   value: Option;
-}> = ({ menuId, value }) => {
+}> = ({ value }) => {
   if (value.rect) {
     return (
       <RectOptionEdit
-        parent={menuId}
         optionID={value.id}
         rect={value.rect}
         action={value.action}
       />
     );
   } else if (value.label) {
-    return <MenuOptionEdit menuId={menuId} option={value} />;
+    return <MenuOptionEdit option={value} />;
   } else {
     return <div>!!!InvalidOption!!!</div>;
   }

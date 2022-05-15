@@ -14,7 +14,7 @@ interface IModelContext {
   setEditId(id?: string): void;
   addOption(id: string, option: Option): void;
   removeOption(id: string): void;
-  updateOption(menuId: string, optionId: string, option: Option): void;
+  updateOption(optionId: string, option: Option): void;
 }
 
 //TODO move this vvvv
@@ -42,7 +42,7 @@ export const ModelContext = createContext<IModelContext>({
   setEditId(id?: string): void {},
   addOption(id: string, option: Option) {},
   removeOption(id: string) {},
-  updateOption(menuId: string, optionId: string, option: Option) {},
+  updateOption(optionId: string, option: Option) {},
 });
 
 const ModelContextProvider: FunctionComponent<{ children: React.ReactNode }> = (
@@ -71,18 +71,9 @@ const ModelContextProvider: FunctionComponent<{ children: React.ReactNode }> = (
     }
   };
 
-  const updateOptionHandler = (
-    menuId: string,
-    optionId: string,
-    option: Option
-  ) => {
+  const updateOptionHandler = (optionId: string, option: Option) => {
     setMenuState((current) => {
-      const { result, success } = updateOption(
-        current,
-        menuId,
-        optionId,
-        option
-      );
+      const { result, success } = updateOption(current, optionId, option);
       if (!success) {
         //just going to it
         console.log("could not update");

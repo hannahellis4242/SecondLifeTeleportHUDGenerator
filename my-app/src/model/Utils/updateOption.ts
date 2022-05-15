@@ -1,23 +1,32 @@
 import Menu from "../Menu";
 import Option from "../Option";
 
-const findMenuWithId = (menu: Menu, id: string): Menu | null => {
-  if (menu.id === id) {
-    return menu;
+const isMenu = (item: Menu | undefined): item is Menu => {
+  return !!item;
+};
+
+const findMenuWithOptionId = (
+  [head, ...tail]: Menu[],
+  optionId: string
+): Menu | null => {
+  if (head) {
+    if (head.options.some(({ id }) => id === optionId)) {
+      return head;
+    }
+    return findMenuWithOptionId(
+      tail.concat(head.options.map(({ action }) => action.menu).filter(isMenu)),
+      optionId
+    );
   }
-  const subMenu: Menu | undefined = menu.options
-    .map(({ action }) => action.menu)
-    .find((child) => (child ? findMenuWithId(child, id) : false));
-  return subMenu ? subMenu : null;
+  return null;
 };
 
 export const updateOption = (
   current: Menu,
-  menuId: string,
   optionId: string,
   updatedOption: Option
 ) => {
-  const menuWithGivenId = findMenuWithId(current, menuId);
+  const menuWithGivenId = findMenuWithOptionId([current], optionId);
   if (menuWithGivenId) {
     const [newOptions, newOptionsAreDifferentToOriginal] =
       menuWithGivenId.options

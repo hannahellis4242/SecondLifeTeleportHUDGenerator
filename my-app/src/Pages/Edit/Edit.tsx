@@ -52,10 +52,7 @@ const Edit: FunctionComponent = () => {
         {menu ? (
           <EditMenu value={menu} />
         ) : optionInfo ? (
-          <EditOptionTag
-            menuId={optionInfo.parent.id}
-            value={optionInfo.option}
-          />
+          <EditOptionTag value={optionInfo.option} />
         ) : (
           <section>Nothing to edit</section>
         )}

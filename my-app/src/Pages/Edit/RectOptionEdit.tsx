@@ -10,11 +10,10 @@ import RectangleInput from "./RectangleInput";
 import classes from "./RectangleOption.module.css";
 
 const RectOptionEdit: FunctionComponent<{
-  parent: string;
   optionID: string;
   rect: Rectangle;
   action: Action;
-}> = ({ parent, optionID, rect, action }) => {
+}> = ({ optionID, rect, action }) => {
   const { updateOption } = useContext(ModelContext);
   const rectRef = useRef<RectangleInput>(null);
   const teleportRef = useRef<HTMLInputElement>(null);
@@ -46,13 +45,13 @@ const RectOptionEdit: FunctionComponent<{
     if (rectInput) {
       const teleport = teleportRef.current;
       if (teleport) {
-        updateOption(parent, optionID, {
+        updateOption(optionID, {
           id: optionID,
           rect: rectInput.rectangle,
           action: { destination: teleport.value },
         });
       } else {
-        updateOption(parent, optionID, {
+        updateOption(optionID, {
           id: optionID,
           rect: rectInput.rectangle,
           action,
