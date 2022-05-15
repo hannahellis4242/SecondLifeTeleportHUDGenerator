@@ -14,3 +14,7 @@
 .body {
   padding: 5px;
 }
+
+.btn {
+  float: right;
+}

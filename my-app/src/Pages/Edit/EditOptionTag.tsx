@@ -10,6 +10,7 @@ const EditOptionTag: FunctionComponent<{
   if (value.rect) {
     return (
       <RectOptionEdit
+        parent={menuId}
         optionID={value.id}
         rect={value.rect}
         action={value.action}
